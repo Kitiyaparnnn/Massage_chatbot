@@ -23,9 +23,10 @@ app.post("/webhook", (req, res) => {
     //get user message
     let msg = req.body.events[0].message.text;
 
-    aimlParser.getResult(msg, (answer, wildCardArray, input) => {
-      reply(reply_token, answer);
-    });
+    aimlInterpreter.findAnswerInLoadedAIMLFiles(msg, (answer, wildCardArray, input) => {
+        reply(reply_token, answer)
+    })
+    
     res.sendStatus(200);
   }
   request.on("error", (err) => {
