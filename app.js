@@ -24,10 +24,8 @@ app.post("/webhook", (req, res) => {
     //get user message
     let msg = req.body.events[0].message.text;
 
-    aimlParser.getResult(msg, (answer, wildCardArray, input) => {
-        console.log('Result = ' + answer);
-        reply(reply_token, answer)
-    })
+    reply(reply_token, msg)
+ 
 
     res.sendStatus(200);
 
