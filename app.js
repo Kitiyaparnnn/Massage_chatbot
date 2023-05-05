@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/webhook", (req, res) => {
-  res.send("HTTP POST request sent to the webhook URL!");
+//   res.send("HTTP POST request sent to the webhook URL!");
   if (req.body.events[0].type === "message") {
     let reply_token = req.body.events[0].replyToken;
 
@@ -38,7 +38,7 @@ function reply(reply_token, msg) {
   //Request header
   let headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    "Authorization": `Bearer ${token}`
   };
 
   //Request body
