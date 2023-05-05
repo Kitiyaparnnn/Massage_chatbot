@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-const token = require('token')
+const token = require('./token.js')
 
 const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
