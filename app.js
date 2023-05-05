@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const request = require('express/lib/request')
 const app = express()
 const token = require('token')
 
