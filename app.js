@@ -16,8 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/webhook", (req, res) => {
-//   res.send("HTTP POST request sent to the webhook URL!");
-//   if (req.body.events[0].type === "message") {
+
     let reply_token = req.body.events[0].replyToken;
 
     //get user message
@@ -28,10 +27,7 @@ app.post("/webhook", (req, res) => {
     })
 
     res.sendStatus(200);
-//   }
-//   request.on("error", (err) => {
-//     console.error(err);
-//   });
+
 });
 
 function reply(reply_token, msg) {
