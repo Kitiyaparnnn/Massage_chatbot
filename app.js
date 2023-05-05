@@ -34,7 +34,7 @@ app.post("/webhook", (req, res) => {
   });
 });
 
-function reply(reply_token) {
+function reply(reply_token, msg) {
   //Request header
   let headers = {
     "Content-Type": "application/json",
