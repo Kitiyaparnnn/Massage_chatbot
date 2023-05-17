@@ -50,9 +50,9 @@ async function reply(reply_token, playload) {
     });
     console.log(body);
     // Send POST request using Axios
-    // const response = await axios.post(LINE_REPLY, body, { headers });
+    const response = await axios.post(LINE_REPLY, body, { headers });
 
-    // console.log("status = " + response.status);
+    console.log("status = " + response.status);
   } catch (error) {
     console.error(error);
   }
