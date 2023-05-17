@@ -29,7 +29,7 @@ app.post("/webhook", (req, res) => {
   //classify intend
   let playload = Class.classifyIntent(msg);
 
-  // reply(reply_token, playload)
+  reply(reply_token, playload)
 
   res.sendStatus(200);
 
