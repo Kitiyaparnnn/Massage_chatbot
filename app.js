@@ -3,35 +3,40 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const app = express();
-const AIMLParser = require("aimlparser");
+const Class = require("./classifyIntent")
+// const AIMLParser = require("aimlparser");
 
 const PORT = process.env.PORT || 4000;
 const token = process.env.TOKEN;
-const aimlParser = new AIMLParser({ name: "HelloBot" });
-aimlParser.load(["./aiml.xml"]);
+const LINE_REPLY = "https://api.line.me/v2/bot/message/reply"
+
+// const aimlParser = new AIMLParser({ name: "HelloBot" });
+// aimlParser.load(["./aiml.xml"]);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    // console.log(token);
   res.sendStatus(200);
 });
 
 app.post("/webhook", (req, res) => {
+  //user token
+  let reply_token = req.body.events[0].replyToken;
 
-    let reply_token = req.body.events[0].replyToken;
+  //get user message
+  let msg = req.body.events[0].message.text;
 
-    //get user message
-    let msg = req.body.events[0].message.text;
+  //classify intend
+  let playload = Class.classifyIntent(msg);
 
-    reply(reply_token, msg)
- 
+  // reply(reply_token, playload)
 
-    res.sendStatus(200);
+  res.sendStatus(200);
 
 });
 
-function reply(reply_token, msg) {
+
+function reply(reply_token, playload) {
   //Request header
   let headers = {
     "Content-Type": "application/json",
@@ -42,16 +47,13 @@ function reply(reply_token, msg) {
   let body = JSON.stringify({
     replyToken: reply_token,
     messages: [
-      {
-        type: "text",
-        text: msg,
-      },
+      playload,
     ],
   });
 
   request.post(
     {
-      url: "https://api.line.me/v2/bot/message/reply",
+      url: L,
       headers: headers,
       body: body,
     },
