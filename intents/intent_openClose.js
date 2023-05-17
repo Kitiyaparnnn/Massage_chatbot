@@ -1,35 +1,29 @@
+const axios = require("axios");
 const api_token = process.env.API_TOKEN;
+const api_url = process.env.API_URL;
 
-function getCheckOpenStatus() {
+async function intentOpenClose() {
+  try {
+    const response = await axios.get(`${api_url}/checkOpenStatus`, {
+      headers: {
+        Authorization: `Bearer ${api_token}`,
+      },
+    });
 
-    request('https://massage-q-manager-remix.vercel.app/api/chatbot/checkOpenStatus',
-      {
-        'auth': {
-          'bearer': api_token
-        }
-      }, (error, res) => {
-        // user error
-        const respError = res.error;
-        if (error) {
-          console.log(error);
-          return ;
-        } else if (respError) {
-          console.log(respError);
-          return ;
-        } else {
-          const data = JSON.parse(res.body);
-          console.log(data);
-          return data;
-        }
-      });
-}
+    const data = response.data;
+    console.log(data);
 
-function intentOpenclose() {
-    let data = getCheckOpenStatus();
     let result = {
-        type: "text",
-        text: "เวลาเปิด-ปิด :"+ `${data.closeAtDays}`
-      }
-    
-      return result;
+      type: "text",
+      text: data.openAtTime,
+    };
+
+    return result;
+  } catch (error) {
+
+    console.error(error);
+    return;
+  }
 }
+
+module.exports = { intentOpenClose };
