@@ -42,12 +42,12 @@ async function reply(reply_token, playload) {
     };
 
     // Request body
-    let body = {
-      "replyToken": reply_token,
-      "messages": [
+    let body = JSON.stringify({
+      replyToken: reply_token,
+      messages: [
         playload,
       ],
-    };
+    });
     console.log(body);
 
     // Send POST request using Axios
