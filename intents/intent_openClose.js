@@ -167,24 +167,20 @@ async function intentOpenClose() {
         }
       };*/
 
-    let result = 
+    let result = [
         {
-            type: "bubble", // ①
-            body: { // ②
-              type: "box", // ③
-              layout: "horizontal", // ④
-              contents: [ // ⑤
-                {
-                  type: "text", // ⑥
-                  text: "Hello,"
-                },
-                {
-                  type: "text", // ⑥
-                  text: "World!"
-                }
-              ]
-            }
-          }
+            type: "text",
+            text: `Today is ${data.isOpenToday}`
+        },
+        {
+            type: "text",
+            text: `This store closes at every  ${data.closeAtDays}`
+        },
+        {
+            type: "text",
+            text: `Time open : ${data.openAtTime} - ${data.closeAttime}`
+        }
+    ]
     
 
     return result;

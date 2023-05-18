@@ -44,9 +44,7 @@ async function reply(reply_token, playload) {
     // Request body
     let body = JSON.stringify({
       replyToken: reply_token,
-      messages: [
-        playload,
-      ],
+      messages: playload,
     });
     console.log(body);
 
