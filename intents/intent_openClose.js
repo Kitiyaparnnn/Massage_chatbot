@@ -15,8 +15,8 @@ async function intentOpenClose() {
     
     let dayOff = data.closeAtDays.join();
     console.log(dayOff);
-
-    /*let result = {
+    
+    let contents = {
         "type": "bubble",
         "header": {
           "contents": [
@@ -165,24 +165,29 @@ async function intentOpenClose() {
           "paddingAll": "20px",
           "type": "box"
         }
-      };*/
+      };
 
-    let result = [
-        {
-            type: "text",
-            text: `Today is ${data.isOpenToday}`
-        },
-        {
-            type: "text",
-            text: `This store closes at every  ${data.closeAtDays}`
-        },
-        {
-            type: "text",
-            text: `Time open : ${data.openAtTime} - ${data.closeAttime}`
-        }
-    ]
+    let result = {
+        "type": "flex",
+        "altText": "openClose_card",
+        "contents": contents
+    }
+
+    // result = [
+    //     {
+    //         type: "text",
+    //         text: `Today is ${data.isOpenToday}`
+    //     },
+    //     {
+    //         type: "text",
+    //         text: `This store closes at every  ${data.closeAtDays}`
+    //     },
+    //     {
+    //         type: "text",
+    //         text: `Time open : ${data.openAtTime} - ${data.closeAtTime}`
+    //     }
+    // ]
     
-
     return result;
   } catch (error) {
 
