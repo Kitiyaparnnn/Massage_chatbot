@@ -172,25 +172,10 @@ async function intentOpenClose() {
         "altText": "openClose_card",
         "contents": contents
     }
-
-    // result = [
-    //     {
-    //         type: "text",
-    //         text: `Today is ${data.isOpenToday}`
-    //     },
-    //     {
-    //         type: "text",
-    //         text: `This store closes at every  ${data.closeAtDays}`
-    //     },
-    //     {
-    //         type: "text",
-    //         text: `Time open : ${data.openAtTime} - ${data.closeAtTime}`
-    //     }
-    // ]
     
     return result;
   } catch (error) {
-
+    // console.log(error.message);
     console.error(error);
     return;
   }
