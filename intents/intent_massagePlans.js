@@ -14,7 +14,7 @@ async function intentMassagePlans() {
         console.log(data);
 
         let cards = [];
-        data.massagePlans.forEach(e => {
+        await data.massagePlans.forEach(e => {
             let card = {
                 "contents": [
                     {
