@@ -22,7 +22,7 @@ app.post("/webhook", async (req, res) => {
 
   //get user message
   let msg = req.body.events[0].message.text;
-  console.log(msg);
+  // console.log(msg);
 
   //classify intent
   let playload = await Class.classifyIntent(msg);
@@ -48,7 +48,8 @@ async function reply(reply_token, playload) {
         playload,
       ],
     });
-    console.log(body);
+    // console.log(body);
+    
     // Send POST request using Axios
     const response = await axios.post(LINE_REPLY, body, { headers });
 
