@@ -1,4 +1,4 @@
-const intent = require("./intents/intent_openClose");
+const intent = require("./intents/intents");
 
 async function classifyIntent(msg) {
   let ask_openClose = ["เวลาเปิดปิด", "วันนี้เปิดไหม", "เวลาทำการ"];
