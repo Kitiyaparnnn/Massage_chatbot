@@ -1,4 +1,4 @@
-exports.info_button = function info_button(){
+function info_button(){
     let result = {
         "type": "template",
         "altText": "This is a buttons template",
@@ -25,3 +25,5 @@ exports.info_button = function info_button(){
 
       return result;
 }
+
+module.exports = info_button;
