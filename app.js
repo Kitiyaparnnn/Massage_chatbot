@@ -1,13 +1,13 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const axios = require("axios");
 const app = express();
-const Class = require("./classifyIntent")
+const Class = require("./classifyIntent");
 
 const PORT = process.env.PORT || 4000;
 const token = process.env.TOKEN;
-const LINE_REPLY = "https://api.line.me/v2/bot/message/reply"
+const LINE_REPLY = "https://api.line.me/v2/bot/message/reply";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -20,17 +20,18 @@ app.post("/webhook", async (req, res) => {
   //user token
   let reply_token = req.body.events[0].replyToken;
 
-  //get user message
-  let msg = req.body.events[0].message.text;
-  // console.log(msg);
+  if (req.body.events[0].type === "message") {
+    //get user message
+    let msg = req.body.events[0].message.text;
+    // console.log(msg);
 
-  //classify intent
-  let playload = await Class.classifyIntent(msg);
+    //classify intent
+    let playload = await Class.classifyIntent(msg);
 
-  reply(reply_token, playload)
+    reply(reply_token, playload);
+  }
 
   res.sendStatus(200);
-
 });
 
 async function reply(reply_token, playload) {
@@ -38,7 +39,7 @@ async function reply(reply_token, playload) {
     // Request header
     let headers = {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     };
 
     // Request body
