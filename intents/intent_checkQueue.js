@@ -1,4 +1,4 @@
-exports.intentcheckQueue = function intentcheckQueue() {
+exports.intentCheckQueue = function intentCheckQueue() {
     let result = {
         "type": "text",
         "text": "coming soon"
