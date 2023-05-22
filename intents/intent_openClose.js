@@ -108,11 +108,11 @@ async function intentOpenClose() {
                       "action": {
                         "label": "action",
                         "type": "uri",
-                        "uri": "https://www.google.com/maps/place/%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%99%E0%B8%A7%E0%B8%94+%E0%B8%AB%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%88%E0%B8%87/@18.7864789,99.0338743,15z/data=!4m6!3m5!1s0x30da255dbcf731fd:0xa940988656a60588!8m2!3d18.7864789!4d99.0338743!16s%2Fg%2F11fzzknqpp"
+                        "uri": "https://goo.gl/maps/H9zUARJpHMJbXzyi8"
                       },
                       "color": "#ffffffcc",
                       "size": "sm",
-                      "text": "150 เชียงใหม่ (ห่างจาก ถนน ไฮเวย์เชียงใหม่ ลำปาง 400 เมตร ตรงข้ามร้านสุกีร้อนแรง) ",
+                      "text": "ข้างโรงพยาบาลเทศบาลหนองป่าครั่ง ตำบลหนองป่าครั่ง อำเภอเมืองเชียงใหม่ เชียงใหม่ 50000",
                       "type": "text",
                       "wrap": true
                     }

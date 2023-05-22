@@ -6,22 +6,20 @@ exports.info_button = function info_button(){
           "type": "buttons",
           "title": "Menu",
           "text": "โปรดเลือกข้อมูลร้านที่ต้องการสอบถาม",
-          "defaultAction": {
-            "type": "text",
-            "text": "ติดต่อเจ้าหน้าที่"
-          },
           "actions": [
             {
-              "type": "text",
+              "type": "message",
+              "label": "วันเปิดปิด",
               "text": "วันเปิดปิด"
             },
             {
-              "type": "text",
-              "text": "ค่าบริการแผนนวด"
+              "type": "message",
+              "label": "แผนนวด",
+              "text": "แผนนวด"
             }
           ]
         }
-      }
+      };
 
       return result;
 }
