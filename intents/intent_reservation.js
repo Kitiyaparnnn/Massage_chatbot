@@ -5,5 +5,5 @@ exports.intentReservation = function intentReservation(req, res, next) {
         "type": "text",
         "text": "coming soon"
     };
-    return reserve_button;
+    return result;
 }
