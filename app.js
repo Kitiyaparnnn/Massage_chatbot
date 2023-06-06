@@ -19,18 +19,21 @@ app.get("/", (req, res) => {
 app.post("/webhook", async (req, res) => {
   //user token
   let reply_token = req.body.events[0].replyToken;
-
+  let playload = {};
   if (req.body.events[0].type === "message") {
     //get user message
     let msg = req.body.events[0].message.text;
-    // console.log(msg);
 
     //classify intent
-    let playload = await Class.classifyIntent(msg);
-
-    reply(reply_token, playload);
+    playload = await Class.classifyIntent(msg);
+  } else if (req.body.events[0].type === "postback") {
+    console.log(req.body.events[0].postback);
+    playload = {
+      type: "text",
+      text: req.body.events[0].postback.data,
+    };
   }
-
+  reply(reply_token, playload);
   res.sendStatus(200);
 });
 
