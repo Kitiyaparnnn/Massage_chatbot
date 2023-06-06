@@ -4,7 +4,7 @@ const {defaultMessage} = require("./intents/default")
 const {info_button} = require("./components/info_button")
 const {intentReservation} = require('./intents/intent_reservation')
 const {intentCheckQueue} = require('./intents/intent_checkQueue')
-const { reserve_button } = require("../components/reserve_button");
+const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 
 
