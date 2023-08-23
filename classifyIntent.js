@@ -63,7 +63,7 @@ async function classifyIntent(msg, userId) {
     else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
     else if (ask_staff.includes(msg)) return intentStaff();
-    else if (ask_schedule.includes(msg)) return intentStaffSchedule();
+    else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else return defaultMessage();
 
 

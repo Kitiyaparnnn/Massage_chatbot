@@ -1,5 +1,6 @@
-exports.intentStaffSchedule = async function intentStaffSchedule() {
+exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
     console.log("intent: staff schedule");
+    console.log(`userId: ${userId}`);
     try {
         // const response = await axios.get(`${api_url}/checkOpenStatus`, {
         //     headers: {
@@ -154,9 +155,9 @@ exports.intentStaffSchedule = async function intentStaffSchedule() {
         let result = {
             "type": "flex",
             "altText": "massagePlans_card",
-            "contents": contents
+            "contents": content
         }
-        
+
         return result;
     } catch (error) {
         console.error(error);
