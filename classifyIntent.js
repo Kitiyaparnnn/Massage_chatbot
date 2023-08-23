@@ -1,9 +1,9 @@
 const { intentOpenClose } = require('./intents/intent_openClose');
 const { intentMassagePlans } = require('./intents/intent_massagePlans');
-const {defaultMessage} = require("./intents/default")
-const {info_button} = require("./components/info_button")
-const {intentReservation} = require('./intents/intent_reservation')
-const {intentCheckQueue} = require('./intents/intent_checkQueue')
+const { defaultMessage } = require("./intents/default")
+const { info_button } = require("./components/info_button")
+const { intentReservation } = require('./intents/intent_reservation')
+const { intentCheckQueue } = require('./intents/intent_checkQueue')
 const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 
@@ -41,11 +41,13 @@ async function classifyIntent(msg) {
             "ค่าบริการนวด",
             "ราคานวด",
             "ราคา",
-            "มีบริการอะไรบ้าง"];
+            "มีบริการอะไรบ้าง",
+            "บริการนวดแผนไทย"];
     let ask_infos = ["สอบถามข้อมูล"];
-    let ask_toreserve = ["ระบบจองคิว"];
-    let ask_checkQueue = ["ตรวจสอบคิว"];
+    let ask_toReserve = ["ระบบจองคิว"];
+    let ask_checkQueue = ["ตรวจสอบคิว","คิวของฉัน","คิว"];
     let ask_massager = ["ค้นหาหมอนวด"];
+    let ask_staff = ["ติดต่อเจ้าหน้าที่","เจ้าหน้าที่"];
 
 
     console.log("stage: classify");
@@ -53,10 +55,11 @@ async function classifyIntent(msg) {
     if (ask_openClose.includes(msg)) return await intentOpenClose();
     else if (ask_massagePlans.includes(msg)) return await intentMassagePlans();
     else if (ask_infos.includes(msg)) return info_button();
-    // else if (ask_toreserve.includes(msg)) return intentReservation();
-    else if (ask_toreserve.includes(msg)) return reserve_button();
-    else if(ask_massager.includes(msg)) return massager_cards();
+    else if (ask_toReserve.includes(msg)) return intentReservation();
+    // else if (ask_toReserve.includes(msg)) return reserve_button();
+    else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
+    else if (ask_staff.includes(msg)) return intentStaff();
     else return defaultMessage();
 
 

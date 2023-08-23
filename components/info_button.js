@@ -13,8 +13,13 @@ exports.info_button = function info_button(){
             },
             {
               "type": "message",
-              "label": "แผนนวด",
-              "text": "แผนนวด"
+              "label": "บริการนวดแผนไทย",
+              "text": "บริการนวดแผนไทย"
+            },
+            {
+              "type": "message",
+              "label": "ติดต่อเจ้าหน้าที่",
+              "text": "ติดต่อเจ้าหน้าที่"
             }
           ]
         }
