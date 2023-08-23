@@ -3,12 +3,14 @@ const { intentMassagePlans } = require('./intents/intent_massagePlans');
 const { defaultMessage } = require("./intents/default")
 const { info_button } = require("./components/info_button")
 const { intentReservation } = require('./intents/intent_reservation')
+const { intentStaff } = require('./intents/intent_staff')
+const { intentStaffSchedule } = require('./intents/intent_staffSchedule')
 const { intentCheckQueue } = require('./intents/intent_checkQueue')
 const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 
 
-async function classifyIntent(msg) {
+async function classifyIntent(msg, userId) {
     let ask_openClose =
         ["เวลาเปิดปิด",
             "วันนี้เปิดไหม",
@@ -45,9 +47,10 @@ async function classifyIntent(msg) {
             "บริการนวดแผนไทย"];
     let ask_infos = ["สอบถามข้อมูล"];
     let ask_toReserve = ["ระบบจองคิว"];
-    let ask_checkQueue = ["ตรวจสอบคิว","คิวของฉัน","คิว"];
+    let ask_checkQueue = ["ตรวจสอบคิว", "คิวของฉัน", "คิว"];
     let ask_massager = ["ค้นหาหมอนวด"];
-    let ask_staff = ["ติดต่อเจ้าหน้าที่","เจ้าหน้าที่"];
+    let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];
+    let ask_schedule = ["ตารางงาน", "ตารางการทำงาน", "ตารางทำงาน"]
 
 
     console.log("stage: classify");
@@ -60,6 +63,7 @@ async function classifyIntent(msg) {
     else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
     else if (ask_staff.includes(msg)) return intentStaff();
+    else if (ask_schedule.includes(msg)) return intentStaffSchedule();
     else return defaultMessage();
 
 

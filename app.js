@@ -19,13 +19,15 @@ app.get("/", (req, res) => {
 app.post("/webhook", async (req, res) => {
   //user token
   let reply_token = req.body.events[0].replyToken;
+  let user = req.body.events[0].source.userId;
   let playload = {};
+  
   if (req.body.events[0].type === "message") {
     //get user message
     let msg = req.body.events[0].message.text;
 
     //classify intent
-    playload = await Class.classifyIntent(msg);
+    playload = await Class.classifyIntent(msg,userId);
   } else if (req.body.events[0].type === "postback") {
     console.log(req.body.events[0].postback);
     playload = {
