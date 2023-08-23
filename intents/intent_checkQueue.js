@@ -4,6 +4,7 @@ const api_url = process.env.API_URL;
 
 
 exports.intentCheckQueue = async function intentCheckQueue() {
+    console.log("intent: check queue");
     try {
         // const response = await axios.get(`${api_url}/checkOpenStatus`, {
         //     headers: {

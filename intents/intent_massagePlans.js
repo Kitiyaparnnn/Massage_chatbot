@@ -3,6 +3,7 @@ const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
 async function intentMassagePlans() {
+    console.log("intent: massage plans");
     try {
         const response = await axios.get(`${api_url}/checkMassagePlans`, {
             headers: {

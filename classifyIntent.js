@@ -46,7 +46,7 @@ async function classifyIntent(msg, userId) {
             "มีบริการอะไรบ้าง",
             "บริการนวดแผนไทย"];
     let ask_infos = ["สอบถามข้อมูล"];
-    let ask_toReserve = ["ระบบจองคิว"];
+    let ask_toReserve = ["ระบบจองคิว","จอง","จองคิว","ระบบจอง"];
     let ask_checkQueue = ["ตรวจสอบคิว", "คิวของฉัน", "คิว"];
     let ask_massager = ["ค้นหาหมอนวด"];
     let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];

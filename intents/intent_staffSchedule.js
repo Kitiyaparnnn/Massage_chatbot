@@ -1,4 +1,5 @@
 exports.intentStaffSchedule = async function intentStaffSchedule() {
+    console.log("intent: staff schedule");
     try {
         // const response = await axios.get(`${api_url}/checkOpenStatus`, {
         //     headers: {
