@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 app.post("/webhook", async (req, res) => {
   //user token
   let reply_token = req.body.events[0].replyToken;
-  // let user = req.body.events[0].source.userId;
+  let userId = req.body.events[0].source.userId;
   let playload = {};
 
   console.log(req.body.events[0].source);
