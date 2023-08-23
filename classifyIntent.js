@@ -10,7 +10,7 @@ const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 
 
-async function classifyIntent(msg) {
+async function classifyIntent(msg, userId) {
     let ask_openClose =
         ["เวลาเปิดปิด",
             "วันนี้เปิดไหม",
