@@ -10,7 +10,7 @@ const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 
 
-async function classifyIntent(msg, userId) {
+async function classifyIntent(msg) {
     let ask_openClose =
         ["เวลาเปิดปิด",
             "วันนี้เปิดไหม",
@@ -46,7 +46,7 @@ async function classifyIntent(msg, userId) {
             "มีบริการอะไรบ้าง",
             "บริการนวดแผนไทย"];
     let ask_infos = ["สอบถามข้อมูล"];
-    let ask_toReserve = ["ระบบจองคิว","จอง","จองคิว","ระบบจอง"];
+    let ask_toReserve = ["ระบบจองคิว", "จอง", "จองคิว", "ระบบจอง"];
     let ask_checkQueue = ["ตรวจสอบคิว", "คิวของฉัน", "คิว"];
     let ask_massager = ["ค้นหาหมอนวด"];
     let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];

@@ -29,7 +29,7 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
 
     //classify intent
-    playload = await Class.classifyIntent(msg,userId);
+    playload = await Class.classifyIntent(msg);
   } else if (req.body.events[0].type === "postback") {
     console.log(req.body.events[0].postback);
     playload = {
