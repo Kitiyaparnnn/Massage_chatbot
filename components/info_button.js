@@ -4,7 +4,7 @@ exports.info_button = function info_button(){
         "altText": "This is a buttons template",
         "template": {
           "type": "buttons",
-          "text": "โปรดเลือกข้อมูลร้านที่ต้องการสอบถาม",
+          "text": "โปรดเลือกข้อมูลที่ต้องการสอบถาม",
           "actions": [
             {
               "type": "message",
