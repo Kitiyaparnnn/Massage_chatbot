@@ -109,7 +109,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
                                 ],
                                 "margin": "xs"
                             },
-                            col1
+                            // col1
                         ],
                         "cornerRadius": "30px",
                         "layout": "vertical",
@@ -138,7 +138,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
                                 ],
                                 "margin": "xs"
                             },
-                            col2
+                            // col2
                         ],
                         "cornerRadius": "30px",
                         "layout": "vertical",
