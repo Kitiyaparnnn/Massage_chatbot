@@ -11,7 +11,45 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
         // const data = response.data;
         // console.log(data);
 
-        let col1 = [], col2 = [];
+        let col1 = [{
+            "contents": [
+                {
+                    "align": "center",
+                    "text": "คิว",
+                    "type": "text",
+                    "weight": "bold"
+                },
+                {
+                    "align": "center",
+                    "color": "#0367D3",
+                    "text": "เบอร์",
+                    "type": "text",
+                    "weight": "bold"
+                }
+            ],
+            "layout": "horizontal",
+            "margin": "xs",
+            "type": "box"
+        }], col2 = [{
+            "contents": [
+                {
+                    "align": "center",
+                    "text": "คิว",
+                    "type": "text",
+                    "weight": "bold"
+                },
+                {
+                    "align": "center",
+                    "color": "#0367D3",
+                    "text": "เบอร์",
+                    "type": "text",
+                    "weight": "bold"
+                }
+            ],
+            "layout": "horizontal",
+            "margin": "xs",
+            "type": "box"
+        }];
         for (var i = 1; i <= 25; i++) {
             let row1 = {
                 "type": "box",
@@ -88,58 +126,14 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
             "body": {
                 "contents": [
                     {
-                        "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "คิว",
-                                        "align": "center",
-                                        "weight": "bold"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "เบอร์",
-                                        "align": "center",
-                                        "weight": "bold",
-                                        "color": "#0367D3"
-                                    }
-                                ],
-                                "margin": "xs"
-                            },
-                            // col1
-                        ],
+                        "contents": col1,
                         "cornerRadius": "30px",
                         "layout": "vertical",
                         "type": "box",
                         "position": "relative"
                     },
                     {
-                        "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "คิว",
-                                        "align": "center",
-                                        "weight": "bold"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "เบอร์",
-                                        "align": "center",
-                                        "weight": "bold",
-                                        "color": "#0367D3"
-                                    }
-                                ],
-                                "margin": "xs"
-                            },
-                            // col2
-                        ],
+                        "contents":col2,
                         "cornerRadius": "30px",
                         "layout": "vertical",
                         "type": "box",
@@ -421,7 +415,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
         let result = {
             "type": "flex",
             "altText": "schedule_card",
-            "contents": bubble
+            "contents": content
         }
 
         return result;
