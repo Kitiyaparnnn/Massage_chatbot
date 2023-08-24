@@ -10,19 +10,25 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
                 Authorization: `Bearer ${process.env.LINE_CHANEL_ACCESS_TOKEN}`,
             },
         });
-        console.log(user_name.displayName);
-        if(user_name){
-            staff_schedule();
+        console.log(user_name);
+        // if(user_name){
+        //     staff_schedule();
+        // }
+        // else{
+        //     let result = {
+        //         "type": "text",
+        //         "text": "ไม่สามารถเข้าดูข้อมูลส่วนนี้ได้ค่ะ กรุณาติดต่อเจ้าหน้าที่"
+        //     }
+
+        //     return result;
+        // }
+        let result = {
+            "type": "text",
+            "text": "ไม่สามารถเข้าดูข้อมูลส่วนนี้ได้ค่ะ กรุณาติดต่อเจ้าหน้าที่"
         }
-        else{
-            let result = {
-                "type": "text",
-                "text": "ไม่สามารถเข้าดูข้อมูลส่วนนี้ได้ค่ะ กรุณาติดต่อเจ้าหน้าที่"
-            }
-        
-            return result;
-        }
-        
+
+        return result;
+
     } catch (error) {
         console.error(error);
     }
