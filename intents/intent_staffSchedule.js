@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { staff_schedule } = require('./components/staff_schedule');
+const { staff_schedule } = require('../components/staff_schedule');
 
 exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
     console.log("intent: staff schedule");
