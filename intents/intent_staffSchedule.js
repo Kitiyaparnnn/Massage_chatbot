@@ -19,7 +19,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": i,
+                        "text": `${i}`,
                         "align": "center"
                     },
                     {
@@ -37,7 +37,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": 25 + i,
+                        "text": `${25 + i}`,
                         "align": "center"
                     },
                     {
@@ -154,7 +154,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
         let result = {
             "type": "flex",
-            "altText": "massagePlans_card",
+            "altText": "schedule_card",
             "contents": content
         }
 
