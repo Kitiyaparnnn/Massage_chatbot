@@ -22,12 +22,6 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
             return result;
         }
-        let result = {
-            "type": "text",
-            "text": "ไม่สามารถเข้าดูข้อมูลส่วนนี้ได้ค่ะ กรุณาติดต่อเจ้าหน้าที่"
-        }
-
-        return result;
 
     } catch (error) {
         console.error(error);
