@@ -6,8 +6,8 @@ const app = express();
 const Class = require("./classifyIntent");
 
 const PORT = process.env.PORT || 4000;
-const token = process.env.TOKEN;
-const LINE_REPLY = "https://api.line.me/v2/bot/message/reply";
+const token = process.env.LINE_CHANEL_ACCESS_TOKEN;
+const LINE_REPLY = `${process.env.LINE_API}/message/reply`;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
