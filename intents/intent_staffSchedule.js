@@ -152,10 +152,276 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
         }
 
+        let bubble = {
+            "type": "bubble",
+            "header": {
+                "backgroundColor": "#0367D3",
+                "contents": [
+                    {
+                        "contents": [
+                            {
+                                "color": "#ffffff66",
+                                "size": "sm",
+                                "text": "ตารางงานวันที่ ",
+                                "type": "text"
+                            },
+                            {
+                                "color": "#ffffff",
+                                "flex": 4,
+                                "size": "xl",
+                                "text": "<<วันที่>>",
+                                "type": "text",
+                                "weight": "bold"
+                            }
+                        ],
+                        "layout": "vertical",
+                        "type": "box"
+                    }
+                ],
+                "layout": "vertical",
+                "paddingAll": "20px",
+                "paddingTop": "22px",
+                "spacing": "xs",
+                "type": "box"
+            },
+            "body": {
+                "contents": [
+                    {
+                        "contents": [
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "คิว",
+                                        "type": "text",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "color": "#0367D3",
+                                        "text": "เบอร์",
+                                        "type": "text",
+                                        "weight": "bold"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "1",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "2",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "3",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "4",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "5",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            }
+                        ],
+                        "cornerRadius": "30px",
+                        "layout": "vertical",
+                        "position": "relative",
+                        "type": "box"
+                    },
+                    {
+                        "contents": [
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "คิว",
+                                        "type": "text",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "color": "#0367D3",
+                                        "text": "เบอร์",
+                                        "type": "text",
+                                        "weight": "bold"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "1",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "2",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "3",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "4",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            },
+                            {
+                                "contents": [
+                                    {
+                                        "align": "center",
+                                        "text": "5",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "text": "เบอร์",
+                                        "type": "text"
+                                    }
+                                ],
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "type": "box"
+                            }
+                        ],
+                        "cornerRadius": "30px",
+                        "layout": "vertical",
+                        "position": "relative",
+                        "type": "box"
+                    }
+                ],
+                "layout": "horizontal",
+                "type": "box"
+            }
+        };
+
         let result = {
             "type": "flex",
             "altText": "schedule_card",
-            "contents": content
+            "contents": bubble
         }
 
         return result;
