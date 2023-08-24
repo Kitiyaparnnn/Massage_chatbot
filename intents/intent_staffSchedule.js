@@ -22,7 +22,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
         }
         else {
 
-            staff_schedule();
+            return staff_schedule();
         }
 
     } catch (error) {
