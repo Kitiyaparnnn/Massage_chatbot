@@ -11,16 +11,18 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
             },
         });
         console.log(`userName: ${user_name.data.displayName}`);
-        if(!!!user_name.data){
-            staff_schedule();
-        }
-        else{
+        console.log(!!!user_name.data);
+        if (!!!user_name.data) {
             let result = {
                 "type": "text",
                 "text": "ไม่สามารถเข้าดูข้อมูลส่วนนี้ได้ค่ะ กรุณาติดต่อเจ้าหน้าที่"
             }
 
             return result;
+        }
+        else {
+
+            staff_schedule();
         }
 
     } catch (error) {
