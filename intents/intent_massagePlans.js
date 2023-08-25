@@ -46,12 +46,12 @@ async function intentMassagePlans() {
                 "contents": [
                     {
                         "size": "xl",
-                        "text": "ค่าบริการนวดรูปแบบต่างๆ",
+                        "text": "ค่าบริการนวดแผนไทย",
                         "type": "text",
                         "weight": "bold"
                     },
                     {
-                        "contents": 
+                        "contents":
                             cards
                         ,
                         "layout": "vertical",
@@ -84,7 +84,7 @@ async function intentMassagePlans() {
             "altText": "massagePlans_card",
             "contents": contents
         }
-        
+
         return result;
 
     } catch (error) {
