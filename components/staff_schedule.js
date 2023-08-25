@@ -25,7 +25,6 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                 },
                 {
                     "align": "center",
-                    "color": "#0367D3",
                     "text": "เบอร์",
                     "type": "text",
                     "weight": "bold"
@@ -44,7 +43,6 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                 },
                 {
                     "align": "center",
-                    "color": "#0367D3",
                     "text": "เบอร์",
                     "type": "text",
                     "weight": "bold"
@@ -64,7 +62,8 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                         {
                             "type": "text",
                             "text": `${i}`,
-                            "align": "center"
+                            "align": "center",
+                            "color": "#0367D3"
                         },
                         {
                             "type": "text",
