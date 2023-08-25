@@ -3,7 +3,7 @@ const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
 exports.staff_schedule = async function staff_schedule(masseuseNo) {
-    masseuseNo = 10
+
     try {
         //get schedule data from SERVER API
         // const response = await axios.get(`${api_url}/checkOpenStatus`, {
