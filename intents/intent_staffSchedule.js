@@ -33,7 +33,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
             return result;
         }
         else {
-            var masseuseNo = 10
+            var masseuseNo = 10;
             return staff_schedule(masseuseNo);
         }
 

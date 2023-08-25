@@ -97,8 +97,8 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                 };
             }
 
-            if (i <= 25) col1.push(row1);
-            else col2.push(row2);
+            if (i <= 25) col1.push(row);
+            else col2.push(row);
         }
 
         let content = {
