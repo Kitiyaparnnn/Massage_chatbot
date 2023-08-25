@@ -8,6 +8,7 @@ const { intentStaffSchedule } = require('./intents/intent_staffSchedule')
 const { intentCheckQueue } = require('./intents/intent_checkQueue')
 const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
+const { staff_button } = require('./components/staff_button');
 
 
 async function classifyIntent(msg, userId) {
@@ -51,6 +52,7 @@ async function classifyIntent(msg, userId) {
     let ask_massager = ["ค้นหาหมอนวด"];
     let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];
     let ask_schedule = ["ตารางงาน", "ตารางการทำงาน", "ตารางทำงาน"]
+    let ask_staffChoice = ["ข้อมูลเจ้าหน้าที่", "เมนูพนักงาน", "เมนูเจ้าหน้าที่", "เมนูหมอนวด"];
 
 
     console.log("stage: classify");
@@ -59,11 +61,11 @@ async function classifyIntent(msg, userId) {
     else if (ask_massagePlans.includes(msg)) return await intentMassagePlans();
     else if (ask_infos.includes(msg)) return info_button();
     else if (ask_toReserve.includes(msg)) return intentReservation();
-    // else if (ask_toReserve.includes(msg)) return reserve_button();
     else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
     else if (ask_staff.includes(msg)) return intentStaff();
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
+    else if (ask_staffChoice.includes(msg)) return staff_button();
     else return defaultMessage();
 
 

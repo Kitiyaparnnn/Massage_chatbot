@@ -2,8 +2,9 @@ const axios = require("axios");
 const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
-exports.staff_schedule = async function staff_schedule() {
+exports.staff_schedule = async function staff_schedule(masseuseNo) {
     try {
+        //get schedule data from SERVER API
         // const response = await axios.get(`${api_url}/checkOpenStatus`, {
         //     headers: {
         //         Authorization: `Bearer ${api_token}`,
@@ -52,47 +53,53 @@ exports.staff_schedule = async function staff_schedule() {
             "margin": "xs",
             "type": "box"
         }];
-        for (var i = 1; i <= 25; i++) {
-            let row1 = {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": `${i}`,
-                        "align": "center"
-                    },
-                    {
-                        "type": "text",
-                        "text": "เบอร์",
-                        "align": "center",
-                        "color": "#0367D3"
-                    }
-                ],
-                "margin": "xs"
-            };
-            let row2 = {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": `${25 + i}`,
-                        "align": "center"
-                    },
-                    {
-                        "type": "text",
-                        "text": "เบอร์",
-                        "align": "center",
-                        "color": "#0367D3"
-                    }
-                ],
-                "margin": "xs"
-            };
-            col1.push(row1);
-            col2.push(row2);
+        for (var i = 1; i <= 50; i++) {
+            let row;
+            if (masseuseNo == i) {
+                row = {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": `${i}`,
+                            "align": "center"
+                        },
+                        {
+                            "type": "text",
+                            "text": "เบอร์",
+                            "align": "center",
+                            "color": "#0367D3"
+                        }
+                    ],
+                    "margin": "xs"
+                };
+            }
+            else {
+                row = {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": `${i}`,
+                            "align": "center"
+                        },
+                        {
+                            "type": "text",
+                            "text": "เบอร์",
+                            "align": "center",
+
+                        }
+                    ],
+                    "margin": "xs"
+                };
+            }
+
+            if (i <= 25) col1.push(row1);
+            else col2.push(row2);
         }
-    
+
         let content = {
             "type": "bubble",
             "header": {
@@ -135,7 +142,7 @@ exports.staff_schedule = async function staff_schedule() {
                         "position": "relative"
                     },
                     {
-                        "contents":col2,
+                        "contents": col2,
                         "cornerRadius": "30px",
                         "layout": "vertical",
                         "type": "box",
@@ -145,18 +152,18 @@ exports.staff_schedule = async function staff_schedule() {
                 "layout": "horizontal",
                 "type": "box"
             }
-    
+
         }
-    
-    
+
+
         let result = {
             "type": "flex",
             "altText": "schedule_card",
             "contents": content
         }
-    
+
         return result;
     } catch (error) {
-        
+
     }
 }
