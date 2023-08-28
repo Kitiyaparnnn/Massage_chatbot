@@ -156,11 +156,29 @@ async function intentOpenClose() {
                   "margin": "md",
                   "paddingAll": "none",
                   "type": "box"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "☎️ 053117548",
+                      "color": "#ffffffde"
+                    },
+                    {
+                      "type": "text",
+                      "text": "📞 0656983469",
+                      "color": "#ffffffde"
+                    }
+                  ],
+                  "margin": "sm"
                 }
               ],
               "layout": "vertical",
               "type": "box"
-            }
+            },
+            
           ],
           "layout": "vertical",
           "paddingAll": "20px",
