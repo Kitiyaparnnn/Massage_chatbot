@@ -33,7 +33,7 @@ app.post("/webhook", async (req, res) => {
   } else if (req.body.events[0].type === "postback") {
     let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
-
+    let text;
     //get user's reservation detail
     let date = '';
     let name = '', phone_no='', plan='';
@@ -45,7 +45,7 @@ app.post("/webhook", async (req, res) => {
     }
     playload = {
       "type": "text",
-      "text": req.body.events[0].postback.data,
+      "text": text,
     };
   }
   reply(reply_token, playload);
