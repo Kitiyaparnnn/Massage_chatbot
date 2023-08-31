@@ -8,11 +8,11 @@ exports.intentReservation = function intentReservation(stage) {
   var max_date = new Date(new Date().toLocaleString({ timeZone: 'Asia/Bangkok' }));
   max_date.setDate(today_date.getDate() + 3);
 
-  var current_date = today_date.toISOString().split('T')[0];
+  var current_date = today_date.getFullYear().toString() +'-'+ (today_date.getFullYear()+1).toString() + '-' + today_date.getDate().toString();
   var current_time = today_date.toLocaleString('de-DE', { hour: '2-digit', hour12: false, timeZone: 'Asia/Bangkok' }).split(' ')[0] + ":" + String(today_date.getMinutes()).padStart(2, '0');
   var today_format = current_date + "t" + current_time;
 
-  var next3_date = max_date.toISOString().split('T')[0];
+  var next3_date = max_date.getFullYear().toString() +'-'+ (max_date.getFullYear()+1).toString() + '-' + max_date.getDate().toString();
   var next3_time = max_date.toLocaleString('de-DE', { hour: '2-digit', hour12: false, timeZone: 'Asia/Bangkok' }).split(' ')[0] + ":" + String(max_date.getMinutes()).padStart(2, '0');
   var next3_format = next3_date + "t" + next3_time;
 
