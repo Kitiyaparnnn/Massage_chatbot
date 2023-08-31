@@ -22,7 +22,7 @@ app.post("/webhook", async (req, res) => {
   let userId = req.body.events[0].source.userId;
   let playload = {};
 
-  console.log(req.body.events[0].source);
+  console.log(req.body.events[0]);
 
   if (req.body.events[0].type === "message") {
     //get user message
