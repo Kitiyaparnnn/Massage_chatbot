@@ -20,9 +20,9 @@ exports.intentReservation = function intentReservation(req, res, next) {
               "label": "Datetime Picker",
               "data": "storeId=12345",
               "mode": "datetime",
-              "initial": today,
+              "initial": today_date,
               "max": "2018-12-31T23:59",
-              "min": today
+              "min": today_date
              }
             
           ]
