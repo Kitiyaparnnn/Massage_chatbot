@@ -33,11 +33,11 @@ app.post("/webhook", async (req, res) => {
   } else if (req.body.events[0].type === "postback") {
     console.log(req.body.events[0].postback);
     playload = {
-      type: "text",
-      text: req.body.events[0].postback.data,
+      "type": "text",
+      "text": req.body.events[0].postback.data,
     };
   }
-  // reply(reply_token, playload);
+  reply(reply_token, playload);
   res.sendStatus(200);
 });
 
@@ -62,7 +62,7 @@ async function reply(reply_token, playload) {
     console.log("status = " + response.status);
     // return response.status;
   } catch (error) {
-    console.error(error);
+    console.error(error.response.data);
   }
 }
 

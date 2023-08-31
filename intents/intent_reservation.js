@@ -6,8 +6,16 @@ exports.intentReservation = function intentReservation(req, res, next) {
   var max_date = new Date();
   max_date.setDate(today_date.getDate() + 3);
 
-  console.log(`today: ${today_date.toJSON()}`);
-  console.log(`max_date: ${max_date.toJSON()}`);
+  var current_date = today_date.toISOString().split('T')[0];
+  var current_time = today_date.getHours() + ":" + today_date.getMinutes().toString();
+  var today_format = current_date + "t" + current_time;
+
+  var next3_date = max_date.toISOString().split('T')[0];
+  var next3_time = max_date.getHours() + ":" + max_date.getMinutes().toString();
+  var next3_format = next3_date + "t" + next3_time;
+
+  console.log(`today: ${today_format}`);
+  console.log(`max_date: ${next3_format}`);
 
   let result = {
     "type": "template",
@@ -39,16 +47,16 @@ exports.intentReservation = function intentReservation(req, res, next) {
           "type": "action",
           "action": {
             "type": "datetimepicker",
-            "label": "Select date",
-            "data": "storeId=12345",
+            "label": "เลือกวันที่และเวลา",
+            "data": "reserve_date",
             "mode": "datetime",
-            "initial": "2017-12-25t00:00",
-            "max": "2018-01-24t23:59",
-            "min": "2017-12-25t00:00"
+            "initial": today_format,
+            "max": next3_format,
+            "min": today_format
           }
         }
       ]
     }
-  }
+  };
   return result2;
 }
