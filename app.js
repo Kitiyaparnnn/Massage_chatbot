@@ -31,6 +31,7 @@ app.post("/webhook", async (req, res) => {
     //classify intent
     playload = await Class.classifyIntent(msg, userId);
   } else if (req.body.events[0].type === "postback") {
+    
     console.log(req.body.events[0].postback);
     playload = {
       "type": "text",

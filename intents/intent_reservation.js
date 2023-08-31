@@ -7,7 +7,7 @@ exports.intentReservation = function intentReservation(req, res, next) {
   max_date.setDate(today_date.getDate() + 3);
 
   var current_date = today_date.toISOString().split('T')[0];
-  var current_time = today_date.getHours() + ":" + today_date.getMinutes().toString();
+  var current_time = today_date.getHours().toLocaleString() + ":" + today_date.getMinutes().toString();
   var today_format = current_date + "t" + current_time;
 
   var next3_date = max_date.toISOString().split('T')[0];
