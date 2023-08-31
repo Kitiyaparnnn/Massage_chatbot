@@ -6,7 +6,7 @@ exports.intentReservation = function intentReservation(req, res, next) {
     var max_date = today_date.getDate()+3;
 
     console.log(`today: ${today_date}`);
-    console.log(`max_date: ${max_date}`);
+    console.log(`max_date: ${max_date.toString()}`);
 
     let result = {
         "type": "template",
@@ -20,9 +20,9 @@ exports.intentReservation = function intentReservation(req, res, next) {
               "label": "Datetime Picker",
               "data": "storeId=12345",
               "mode": "datetime",
-              "initial": today_date.toDateString,
+              "initial": today_date.toDateString(),
               "max": "2018-12-31T23:59",
-              "min": today_date.toDateString
+              "min": today_date.toDateString()
              }
             
           ]
