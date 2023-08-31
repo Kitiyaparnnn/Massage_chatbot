@@ -143,11 +143,33 @@ exports.intentCheckQueue = async function intentCheckQueue() {
             }
         };
 
+        // let result = {
+        //     "type": "flex",
+        //     "altText": "queue_card",
+        //     "contents": content
+        // };
+
         let result = {
-            "type": "flex",
-            "altText": "queue_card",
-            "contents": content
-        };
+            "type": "template",
+            "altText": "This is a buttons template",
+            "template": {
+                "type": "buttons",
+                "text": "โทรสอบถามกับทางเจ้าหน้าที่ได้ทางเบอร์โทรศัพท์",
+                "actions": [
+                    {
+                        "type": "uri",
+                        "label": "☎️ 053117548",
+                        "uri": "tel:053117548"
+                    },
+                    {
+                        "type": "uri",
+                        "label": "📞 0656983469",
+                        "uri": "tel:0656983469"
+                    },
+
+                ]
+            }
+        }
         return result;
     }
     catch (err) {
