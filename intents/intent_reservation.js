@@ -18,27 +18,6 @@ exports.intentReservation = function intentReservation(req, res, next) {
   console.log(`max_date: ${next3_format}`);
 
   let result = {
-    "type": "template",
-    "altText": "This is a buttons template",
-    "template": {
-      "type": "buttons",
-      "text": "ยินดีต้อนรับเข้าสู่การจองค่ะ กรุณาเลือกวันที่ต้องการเข้าใช้บริการ",
-      "actions": [
-        {
-          "type": "datetimepicker",
-          "label": "Datetime Picker",
-          "data": "storeId=12345",
-          "mode": "datetime",
-          "initial": today_date.toJSON(),
-          "max": "2023-12-31T23:59",
-          "min": today_date.toJSON()
-        }
-
-      ]
-    }
-  };
-
-  let result2 = {
     "type": "text",
     "text": "ยินดีต้อนรับเข้าสู่การจองค่ะ กรุณาเลือกวันที่ต้องการเข้าใช้บริการ",
     "quickReply": {
@@ -58,5 +37,5 @@ exports.intentReservation = function intentReservation(req, res, next) {
       ]
     }
   };
-  return result2;
+  return result;
 }

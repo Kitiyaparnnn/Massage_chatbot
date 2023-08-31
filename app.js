@@ -31,8 +31,18 @@ app.post("/webhook", async (req, res) => {
     //classify intent
     playload = await Class.classifyIntent(msg, userId);
   } else if (req.body.events[0].type === "postback") {
-    
+    let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
+
+    //get user's reservation detail
+    let date = '';
+    let name = '', phone_no='', plan='';
+    let hours = 0, cost = 0;
+
+    if(postback.data == 'reserve_date'){
+      date = postback.params.datetime;
+      text = date;
+    }
     playload = {
       "type": "text",
       "text": req.body.events[0].postback.data,
