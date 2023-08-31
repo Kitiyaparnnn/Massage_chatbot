@@ -54,7 +54,7 @@ async function reply(reply_token, playload) {
       replyToken: reply_token,
       messages: [playload],
     });
-    console.log(body.toJson());
+    console.log(JSON.stringify(body));
 
     // Send POST request using Axios
     const response = await axios.post(LINE_REPLY, body, { headers });
