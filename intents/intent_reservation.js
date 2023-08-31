@@ -3,7 +3,7 @@ const { reserve_button } = require("../components/reserve_button");
 exports.intentReservation = function intentReservation(req, res, next) {
     console.log("intent: reservation");
     var today_date = new Date();
-    var max_date = today_date.getDate()+3;
+    var max_date = today_date.setDate(today_date.getDate()+3);
 
     console.log(`today: ${today_date.toJSON()}`);
     console.log(`max_date: ${max_date.toJSON()}`);
