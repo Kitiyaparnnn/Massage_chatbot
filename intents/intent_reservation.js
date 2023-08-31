@@ -6,7 +6,7 @@ exports.intentReservation = function intentReservation(req, res, next) {
     var max_date = today_date.setDate(today_date.getDate()+3);
 
     console.log(`today: ${today_date.toJSON()}`);
-    console.log(`max_date: ${max_date.toJSON()}`);
+    console.log(`max_date: ${max_date}`);
 
     let result = {
         "type": "template",
