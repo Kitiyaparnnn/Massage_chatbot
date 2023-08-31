@@ -34,14 +34,21 @@ app.post("/webhook", async (req, res) => {
     let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
     let text;
+
     //get user's reservation detail
-    let date = '';
-    let name = '', phone_no='', plan='';
-    let hours = 0, cost = 0;
+    var detail = {
+      date: '',
+      username:'',
+      phone_no:'',
+      massage_plan:'',
+      hours:0,
+      cost:0
+    }
 
     if(postback.data == 'reserve_date'){
-      date = postback.params.datetime;
-      text = date;
+      detail.date = postback.params.datetime;
+      text = detail.date;
+      //reserve_name
     }
     playload = {
       "type": "text",

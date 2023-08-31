@@ -60,7 +60,7 @@ async function classifyIntent(msg, userId) {
     if (ask_openClose.includes(msg)) return await intentOpenClose();
     else if (ask_massagePlans.includes(msg)) return await intentMassagePlans();
     else if (ask_infos.includes(msg)) return info_button();
-    else if (ask_toReserve.includes(msg)) return intentReservation();
+    else if (ask_toReserve.includes(msg)) return intentReservation('reserve_date');
     else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
     else if (ask_staff.includes(msg)) return intentStaff();
