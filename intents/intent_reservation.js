@@ -4,7 +4,7 @@ exports.intentReservation = function intentReservation(stage) {
   console.log("intent: reservation");
   console.log(`stage: ${stage}`);
 
-  var today_date = new Date();
+  var today_date = new Date().to;
   var max_date = new Date();
   max_date.setDate(today_date.getDate() + 3);
 
@@ -22,6 +22,8 @@ exports.intentReservation = function intentReservation(stage) {
       pad = function (num) {
         return (num < 10 ? '0' : '') + num;
       };
+
+    date.toLocalString('de-DE', { timeZone: 'Asia/Bangkok' });
 
     return date.getFullYear() +
       '-' + pad(date.getMonth() + 1) +
