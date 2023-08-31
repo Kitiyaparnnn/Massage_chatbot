@@ -4,8 +4,8 @@ exports.intentReservation = function intentReservation(stage) {
   console.log("intent: reservation");
   console.log(`stage: ${stage}`);
 
-  var today_date = new Date();
-  var max_date = new Date();
+  var today_date = new Date(new Date().toLocaleString({ timeZone: 'Asia/Bangkok' }));
+  var max_date = new Date(new Date().toLocaleString({ timeZone: 'Asia/Bangkok' }));
   max_date.setDate(today_date.getDate() + 3);
 
   // var current_date = today_date.toISOString().split('T')[0];
@@ -27,9 +27,7 @@ exports.intentReservation = function intentReservation(stage) {
       '-' + pad(date.getMonth() + 1) +
       '-' + pad(date.getDate()) +
       'T' + pad(date.getHours()) +
-      ':' + pad(date.getMinutes()) +
-      dif + pad(Math.floor(Math.abs(tzo) / 60)) +
-      ':' + pad(Math.abs(tzo) % 60);
+      ':' + pad(date.getMinutes());
 
   }
   var today_format = toIsoString(today_date);
