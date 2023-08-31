@@ -37,7 +37,7 @@ app.post("/webhook", async (req, res) => {
       text: req.body.events[0].postback.data,
     };
   }
-  reply(reply_token, playload);
+  // reply(reply_token, playload);
   res.sendStatus(200);
 });
 
@@ -60,6 +60,7 @@ async function reply(reply_token, playload) {
     const response = await axios.post(LINE_REPLY, body, { headers });
 
     console.log("status = " + response.status);
+    // return response.status;
   } catch (error) {
     console.error(error);
   }
