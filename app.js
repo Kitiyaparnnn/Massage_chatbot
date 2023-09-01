@@ -46,10 +46,10 @@ app.post("/webhook", async (req, res) => {
 
     if (postback.data == 'reserve_date') {
       detail.date = postback.params.datetime;
-      // playload.push({
-      //   "type": "text",
-      //   "text": detail.date
-      // });
+      playload.push({
+        "type": "text",
+        "text": detail.date
+      });
       playload.push(await intentReservation('reserve_plan'));
       //reserve_name
     }
@@ -60,6 +60,11 @@ app.post("/webhook", async (req, res) => {
     else if (postback.data.split('&')[0] == 'reserve_duration') {
       detail.duration = postback.data.split('&')[1];
       playload.push(await intentReservation('reserve_user_info'));
+      playload.push(    {
+        "type": "text",
+        "text": "---\nชื่อ: \nเบอร์โทร: \n---",
+        "wrap": true,
+      });
     }
 
     // console.log(postback.data.split('&')[0] == 'reserve_plan');

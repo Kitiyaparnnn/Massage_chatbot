@@ -135,7 +135,7 @@ exports.intentReservation = function intentReservation(stage) {
           "type": "postback",
           "label": e,
           "data": `reserve_duration&${e}`,
-          "displayText": `${e.plan}`
+          "displayText": `${e}`
         }
       }
       items.push(item);
@@ -155,16 +155,15 @@ exports.intentReservation = function intentReservation(stage) {
     let result =
     {
       "type": "text",
-      "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจองใช้บริการ",
+      "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจองใช้บริการด้วยแบบฟอร์มด้านล่าง",
       "wrap": true,
-      "action": {
-        "type": "postback",
-        "label": "reserve_user_info",
-        "data": "reserve_user_info",
-        "inputOption": "openKeyboard",
-        "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
-      }
-
+      // "action": {
+      //   "type": "postback",
+      //   "label": "reserve_user_info",
+      //   "data": "reserve_user_info",
+      //   "inputOption": "openKeyboard",
+      //   "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
+      // }
     };
 
     return result;
