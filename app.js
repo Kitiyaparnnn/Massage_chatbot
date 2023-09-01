@@ -21,7 +21,16 @@ app.post("/webhook", async (req, res) => {
   //user token
   let reply_token = req.body.events[0].replyToken;
   let userId = req.body.events[0].source.userId;
-  let playload = {};
+  let playload = [];
+
+  //get user's reservation detail
+  var detail = {
+    date: '',
+    fullName: '',
+    phoneNo: '',
+    massage_plan: '',
+    duration: 0
+  }
 
   console.log(req.body.events[0]);
 
@@ -30,31 +39,31 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
 
     //classify intent
-    playload = await Class.classifyIntent(msg, userId);
+    playload.push(await Class.classifyIntent(msg, userId));
   } else if (req.body.events[0].type === "postback") {
     let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
 
-    //get user's reservation detail
-    var detail = {
-      date: '',
-      fullName: '',
-      phoneNo: '',
-      massage_plan: '',
-      duration: 0
-    }
-
     if (postback.data == 'reserve_date') {
       detail.date = postback.params.datetime;
-      playload = await intentReservation('reserve_plan');
+      playload.push({
+        "type": "text",
+        "text": detail.date
+      });
+      playload.push(await intentReservation('reserve_plan'));
       //reserve_name
     }
     if (postback.data.split('&')[0] == 'reserve_plan') {
       detail.massage_plan = postback.data.split('&')[1];
-      playload = intentReservation('reserve_user_info');
+      playload.push(await intentReservation('reserve_duration'));
+    }
+    else if (postback.data.split('&')[0] == 'reserve_duration') {
+      detail.duration = postback.data.split('&')[1];
+      playload.push(await intentReservation('reserve_user_info'));
     }
 
-    console.log(postback.data.split('&')[0] == 'reserve_plan');
+    // console.log(postback.data.split('&')[0] == 'reserve_plan');
+    console.log(`reservation detail: ${JSON.stringify(detail)}`);
     console.log(playload);
   }
   reply(reply_token, playload);
@@ -72,7 +81,7 @@ async function reply(reply_token, playload) {
     // Request body
     let body = JSON.stringify({
       replyToken: reply_token,
-      messages: [playload],
+      messages: playload,
     });
     console.log(JSON.stringify(body));
 

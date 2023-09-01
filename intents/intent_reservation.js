@@ -12,8 +12,10 @@ exports.intentReservation = function intentReservation(stage) {
       return reserve_date();
     case 'reserve_plan':
       return reserve_plan();
-    case reserve_user_info():
-      return 
+    case 'reserve_duration':
+      return reserve_duration();
+    case 'reserve_user_info':
+      return reserve_user_info();
     default:
       let result = {
         "type": "text",
@@ -96,7 +98,7 @@ exports.intentReservation = function intentReservation(stage) {
           "type": "action",
           "action": {
             "type": "postback",
-            "label":e.plan,
+            "label": e.plan,
             "data": `reserve_plan&${e.plan}`,
             "displayText": e.plan
           }
@@ -123,14 +125,55 @@ exports.intentReservation = function intentReservation(stage) {
     }
   }
 
-  function reserve_user_info(){
+  async function reserve_duration() {
+    let duration = [1, 1.5, 2, 2.5, 3];
+    let items = [];
+    await duration.forEach(e => {
+      let item = {
+        "type": "action",
+        "action": {
+          "type": "postback",
+          "label": e,
+          "data": `reserve_duration&${e}`,
+          "displayText": e.plan
+        }
+      }
+      items.push(item);
+    });
+
     let result = {
-      "type": "postback",
-      "label": "Buy",
-      "data": "action=buy&itemid=111",
-      "displayText": "Buy",
-      "inputOption": "openKeyboard",
-      "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
+      "type": "text",
+      "text": "ยินดีต้อนรับเข้าสู่การจองค่ะ \nกรุณาเลือกวันที่และเวลาต้องการเข้าใช้บริการ",
+      "quickReply": {
+        "items": items
+      }
+    };
+    return result;
+  }
+
+  function reserve_user_info() {
+    let result = {
+      "type": "flex",
+      "altText": "this is a flex message",
+      "contents": {
+        "type": "bubble",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจองใช้บริการ",
+              "wrap": true,
+              "action": {
+                "type": "postback",
+                "label": "reserve_user_info",
+                "data": "reserve_user_info"
+              }
+            }
+          ]
+        }
+      }
     };
 
     return result;
