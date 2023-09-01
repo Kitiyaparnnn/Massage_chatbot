@@ -135,7 +135,7 @@ exports.intentReservation = function intentReservation(stage) {
           "type": "postback",
           "label": e,
           "data": `reserve_duration&${e}`,
-          "displayText": e.plan
+          "displayText": `${e.plan}`
         }
       }
       items.push(item);
@@ -143,7 +143,7 @@ exports.intentReservation = function intentReservation(stage) {
 
     let result = {
       "type": "text",
-      "text": "ยินดีต้อนรับเข้าสู่การจองค่ะ \nกรุณาเลือกวันที่และเวลาต้องการเข้าใช้บริการ",
+      "text": "เลือกจำนวนชั่วโมงที่คุณลูกค้าต้องการนวด",
       "quickReply": {
         "items": items
       }
@@ -152,28 +152,19 @@ exports.intentReservation = function intentReservation(stage) {
   }
 
   function reserve_user_info() {
-    let result = {
-      "type": "flex",
-      "altText": "this is a flex message",
-      "contents": {
-        "type": "bubble",
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจองใช้บริการ",
-              "wrap": true,
-              "action": {
-                "type": "postback",
-                "label": "reserve_user_info",
-                "data": "reserve_user_info"
-              }
-            }
-          ]
-        }
+    let result =
+    {
+      "type": "text",
+      "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจองใช้บริการ",
+      "wrap": true,
+      "action": {
+        "type": "postback",
+        "label": "reserve_user_info",
+        "data": "reserve_user_info",
+        "inputOption": "openKeyboard",
+        "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
       }
+
     };
 
     return result;
