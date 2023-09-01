@@ -34,7 +34,6 @@ app.post("/webhook", async (req, res) => {
   } else if (req.body.events[0].type === "postback") {
     let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
-    let text;
 
     //get user's reservation detail
     var detail = {
@@ -50,10 +49,12 @@ app.post("/webhook", async (req, res) => {
       playload = await intentReservation('reserve_plan');
       //reserve_name
     }
-    // playload = {
-    //   "type": "text",
-    //   "text": text,
-    // };
+    if (postback.data.split('&')[0] == 'reserve_plan') {
+      detail.massage_plan = postback.data.split('&')[1];
+      playload = intentReservation('reserve_user_info');
+    }
+
+    console.log(postback.data.split('&')[0] == 'reserve_plan');
     console.log(playload);
   }
   reply(reply_token, playload);

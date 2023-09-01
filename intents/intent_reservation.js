@@ -12,6 +12,8 @@ exports.intentReservation = function intentReservation(stage) {
       return reserve_date();
     case 'reserve_plan':
       return reserve_plan();
+    case reserve_user_info():
+      return 
     default:
       let result = {
         "type": "text",
@@ -80,45 +82,33 @@ exports.intentReservation = function intentReservation(stage) {
   async function reserve_plan() {
     try {
       console.log('@reserve plan');
-      // const response = await axios.get(`${api_url}/checkMassagePlans`, {
-      //   headers: {
-      //     Authorization: `Bearer ${api_token}`,
-      //   },
-      // });
+      const response = await axios.get(`${api_url}/checkMassagePlans`, {
+        headers: {
+          Authorization: `Bearer ${api_token}`,
+        },
+      });
 
-      // const massagePlan = response.data;
+      const massagePlan = response.data;
 
-      // let items = [];
-      // await massagePlan.massagePlans.forEach(e => {
-      //   let item = {
-      //     "type": "action",
-      //     "action": {
-      //       "type": "postback",
-      //       "data": "reserve_plan",
-      //       "displayText": e.plan,
-
-      //     }
-      //   }
-      //   items.push(item);
-      // });
+      let items = [];
+      await massagePlan.massagePlans.forEach(e => {
+        let item = {
+          "type": "action",
+          "action": {
+            "type": "postback",
+            "label":e.plan,
+            "data": `reserve_plan&${e.plan}`,
+            "displayText": e.plan
+          }
+        }
+        items.push(item);
+      });
 
       let result = {
         "type": "text",
         "text": "โปรดเลือกแผนนวดที่ต้องการจอง",
         "quickReply": {
-          "items": [
-            {
-              "type": "action",
-              "action": {
-                "type": "postback",
-                "label": "reserve_plan",
-                "data": "reserve_plan&นวดกดจุด",
-                "displayText": "นวดกดจุด",
-                "inputOption": "openKeyboard",
-                "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
-              }
-            }
-          ]
+          "items": items
         }
       };
 
@@ -131,5 +121,18 @@ exports.intentReservation = function intentReservation(stage) {
       };
       return errorMessage;
     }
+  }
+
+  function reserve_user_info(){
+    let result = {
+      "type": "postback",
+      "label": "Buy",
+      "data": "action=buy&itemid=111",
+      "displayText": "Buy",
+      "inputOption": "openKeyboard",
+      "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
+    };
+
+    return result;
   }
 }
