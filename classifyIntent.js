@@ -1,7 +1,7 @@
 const { intentOpenClose } = require('./intents/intent_openClose');
 const { intentMassagePlans } = require('./intents/intent_massagePlans');
 const { defaultMessage } = require("./intents/default")
-const { confirm_reservation} = require("./intents/confirm_reservation")
+const { confirmReservation} = require("./intents/confirm_reservation")
 const { info_button } = require("./components/info_button")
 const { intentReservation } = require('./intents/intent_reservation')
 const { intentStaff } = require('./intents/intent_staff')
@@ -69,7 +69,7 @@ async function classifyIntent(msg, userId) {
     else if (ask_staff.includes(msg)) return intentStaff();
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else if (ask_staffChoice.includes(msg)) return staff_button();
-    else if (msg.includes('---')) return confirm_reservation();
+    else if (msg.includes('---')) return confirmReservation();
     else return defaultMessage();
 
 

@@ -13,6 +13,15 @@ const LINE_REPLY = `${process.env.LINE_API}/message/reply`;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+  //get user's reservation detail
+  var detail = {
+    date: '',
+    fullName: '',
+    phoneNo: '',
+    massage_plan: '',
+    duration: 0
+  }
+
 app.get("/", (req, res) => {
   res.sendStatus(200);
 });
@@ -22,15 +31,6 @@ app.post("/webhook", async (req, res) => {
   let reply_token = req.body.events[0].replyToken;
   let userId = req.body.events[0].source.userId;
   let playload = [];
-
-  //get user's reservation detail
-  var detail = {
-    date: '',
-    fullName: '',
-    phoneNo: '',
-    massage_plan: '',
-    duration: 0
-  }
 
   console.log(req.body.events[0]);
 
