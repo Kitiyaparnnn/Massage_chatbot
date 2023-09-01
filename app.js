@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const app = express();
 const Class = require("./classifyIntent");
+const { intentReservation } = require('./intents/intent_reservation')
 
 const PORT = process.env.PORT || 4000;
 const token = process.env.LINE_CHANEL_ACCESS_TOKEN;
@@ -38,22 +39,21 @@ app.post("/webhook", async (req, res) => {
     //get user's reservation detail
     var detail = {
       date: '',
-      username:'',
-      phone_no:'',
-      massage_plan:'',
-      hours:0,
-      cost:0
+      fullName: '',
+      phoneNo: '',
+      massage_plan: '',
+      duration: 0
     }
 
-    if(postback.data == 'reserve_date'){
+    if (postback.data == 'reserve_date') {
       detail.date = postback.params.datetime;
-      text = detail.date;
+      playload = intentReservation('reserve_plan');
       //reserve_name
     }
-    playload = {
-      "type": "text",
-      "text": text,
-    };
+    // playload = {
+    //   "type": "text",
+    //   "text": text,
+    // };
   }
   reply(reply_token, playload);
   res.sendStatus(200);
