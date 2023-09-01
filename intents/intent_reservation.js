@@ -1,5 +1,7 @@
 const { reserve_button } = require("../components/reserve_button");
 const axios = require("axios");
+const api_token = process.env.API_TOKEN;
+const api_url = process.env.API_URL;
 
 exports.intentReservation = function intentReservation(stage) {
   console.log("intent: reservation");
@@ -76,41 +78,40 @@ exports.intentReservation = function intentReservation(stage) {
   }
 
   async function reserve_plan() {
-
-    const api_token = process.env.API_TOKEN;
-    const api_url = process.env.API_URL;
     try {
-      const response = await axios.get(`${api_url}/checkMassagePlans`, {
-        headers: {
-          Authorization: `Bearer ${api_token}`,
-        },
-      });
+      console.log('@reserve plan');
+      // const response = await axios.get(`${api_url}/checkMassagePlans`, {
+      //   headers: {
+      //     Authorization: `Bearer ${api_token}`,
+      //   },
+      // });
 
-      const massagePlan = response.data;
+      // const massagePlan = response.data;
 
-      let items = [];
-      await massagePlan.massagePlans.forEach(e => {
-        let item = {
-          "type": "action",
-          "action": {
-            "type": "postback",
-            "data": "reserve_plan",
-            "displayText": e.plan,
+      // let items = [];
+      // await massagePlan.massagePlans.forEach(e => {
+      //   let item = {
+      //     "type": "action",
+      //     "action": {
+      //       "type": "postback",
+      //       "data": "reserve_plan",
+      //       "displayText": e.plan,
 
-          }
-        }
-        items.push(item);
-      });
+      //     }
+      //   }
+      //   items.push(item);
+      // });
 
       let result = {
         "type": "text",
-        "text": "ยินดีต้อนรับเข้าสู่การจองค่ะ \nกรุณาเลือกวันที่และเวลาต้องการเข้าใช้บริการ",
+        "text": "โปรดเลือกแผนนวดที่ต้องการจอง",
         "quickReply": {
           "items": [
             {
               "type": "action",
               "action": {
                 "type": "postback",
+                "label": "reserve_plan",
                 "data": "reserve_plan&นวดกดจุด",
                 "displayText": "นวดกดจุด",
                 "inputOption": "openKeyboard",

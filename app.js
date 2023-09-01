@@ -47,13 +47,14 @@ app.post("/webhook", async (req, res) => {
 
     if (postback.data == 'reserve_date') {
       detail.date = postback.params.datetime;
-      playload = intentReservation('reserve_plan');
+      playload = await intentReservation('reserve_plan');
       //reserve_name
     }
     // playload = {
     //   "type": "text",
     //   "text": text,
     // };
+    console.log(playload);
   }
   reply(reply_token, playload);
   res.sendStatus(200);
