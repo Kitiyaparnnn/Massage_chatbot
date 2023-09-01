@@ -1,4 +1,5 @@
 const { reserve_button } = require("../components/reserve_button");
+const axios = require("axios");
 
 exports.intentReservation = function intentReservation(stage) {
   console.log("intent: reservation");
@@ -75,7 +76,7 @@ exports.intentReservation = function intentReservation(stage) {
   }
 
   async function reserve_plan() {
-    const axios = require("axios");
+
     const api_token = process.env.API_TOKEN;
     const api_url = process.env.API_URL;
     try {
@@ -123,6 +124,11 @@ exports.intentReservation = function intentReservation(stage) {
       return result;
     } catch (error) {
       console.error(error);
+      let errorMessage = {
+        "type": "text",
+        "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+      };
+      return errorMessage;
     }
   }
 }
