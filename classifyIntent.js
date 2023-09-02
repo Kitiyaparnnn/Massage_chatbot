@@ -1,7 +1,8 @@
 const { intentOpenClose } = require('./intents/intent_openClose');
 const { intentMassagePlans } = require('./intents/intent_massagePlans');
 const { defaultMessage } = require("./intents/default")
-const { confirmReservation} = require("./intents/confirm_reservation")
+const { intentConfirmReservation} = require("./intents/intent_confirmReservation")
+const { intentSendReservationToAdmin} = require("./intents/intent_sendReservationToAdmin")
 const { info_button } = require("./components/info_button")
 const { intentReservation } = require('./intents/intent_reservation')
 const { intentStaff } = require('./intents/intent_staff')
@@ -13,7 +14,7 @@ const { staff_button } = require('./components/staff_button');
 
 
 
-async function classifyIntent(msg, userId) {
+async function classifyIntent(msg, userId, detail) {
 
     let ask_openClose =
         ["เวลาเปิดปิด",
@@ -56,6 +57,7 @@ async function classifyIntent(msg, userId) {
     let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];
     let ask_schedule = ["ตารางงาน", "ตารางการทำงาน", "ตารางทำงาน"]
     let ask_staffChoice = ["ข้อมูลเจ้าหน้าที่", "เมนูพนักงาน", "เมนูเจ้าหน้าที่", "เมนูหมอนวด"];
+    let confirm = ["ยืนยัน"];
 
 
     console.log("stage: classify");
@@ -69,7 +71,8 @@ async function classifyIntent(msg, userId) {
     else if (ask_staff.includes(msg)) return intentStaff();
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else if (ask_staffChoice.includes(msg)) return staff_button();
-    else if (msg.includes('---')) return confirmReservation();
+    else if (msg.includes('---')) return intentConfirmReservation(detail);
+    else if (confirm.includes(msg)) return intentSendReservationToAdmin(detail);
     else return defaultMessage();
 
 

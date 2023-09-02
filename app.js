@@ -13,14 +13,14 @@ const LINE_REPLY = `${process.env.LINE_API}/message/reply`;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-  //get user's reservation detail
-  var detail = {
-    date: '',
-    fullName: '',
-    phoneNo: '',
-    massage_plan: '',
-    duration: 0
-  }
+//get user's reservation detail
+var detail = {
+  date: '2023-09-02T15:26',
+  fullName: '',
+  phoneNo: '',
+  massage_plan: '',
+  duration: 0
+}
 
 app.get("/", (req, res) => {
   res.sendStatus(200);
@@ -39,7 +39,8 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
 
     //classify intent
-    playload.push(await Class.classifyIntent(msg, userId));
+    playload.push(await Class.classifyIntent(msg, userId, detail));
+
   } else if (req.body.events[0].type === "postback") {
     let postback = req.body.events[0].postback;
     console.log(req.body.events[0].postback);
@@ -48,7 +49,7 @@ app.post("/webhook", async (req, res) => {
       detail.date = postback.params.datetime;
       playload.push({
         "type": "text",
-        "text": detail.date
+        "text": "บันทึกเรียบร้อย"
       });
       playload.push(await intentReservation('reserve_plan'));
       //reserve_name
@@ -60,7 +61,7 @@ app.post("/webhook", async (req, res) => {
     else if (postback.data.split('&')[0] == 'reserve_duration') {
       detail.duration = postback.data.split('&')[1];
       playload.push(await intentReservation('reserve_user_info'));
-      playload.push(    {
+      playload.push({
         "type": "text",
         "text": "---\nชื่อ: \nเบอร์โทร: \n---",
         "wrap": true,
