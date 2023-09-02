@@ -71,7 +71,7 @@ async function classifyIntent(msg, userId, detail) {
     else if (ask_staff.includes(msg)) return intentStaff();
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else if (ask_staffChoice.includes(msg)) return staff_button();
-    else if (msg.includes('---')) return intentConfirmReservation(detail);
+    else if (msg.includes('---')) return intentConfirmReservation(msg, detail);
     else if (confirm.includes(msg)) return intentSendReservationToAdmin(detail);
     else return defaultMessage();
 

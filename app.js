@@ -38,8 +38,43 @@ app.post("/webhook", async (req, res) => {
     //get user message
     let msg = req.body.events[0].message.text;
 
-    //classify intent
-    playload.push(await Class.classifyIntent(msg, userId, detail));
+    if (msg.includes('---')) {
+      const nameRegex = /ชื่อ:\s*([^\n]+)/;
+      const phoneRegex = /เบอร์โทร:\s*([^\n---]*)/;
+
+      const nameMatch = msg.match(nameRegex);
+      const phoneMatch = msg.match(phoneRegex);
+
+      const name = nameMatch ? nameMatch[1].trim() : '';
+      const phoneNo = phoneMatch ? phoneMatch[1].trim() : '';
+
+      // console.log("Name:", name);
+      // console.log("Phone Number:", phoneNo);
+      if (phoneNo == '') {
+        playload.push({
+          "type": "text",
+          "text": "กรุณากรอกเบอร์โทรศัพท์ในแบบฟอร์ม"
+        })
+      }
+      if (name == '') {
+        playload.push({
+          "type": "text",
+          "text": "กรุณากรอกชื่อในแบบฟอร์ม"
+        })
+      }
+      detail.fullName = name;
+      detail.phoneNo = phoneNo;
+
+      if (phoneNo != '' && name != '') {
+        playload.push(await Class.classifyIntent(msg, userId, detail));
+      }
+    }
+    else {
+      //classify intent
+      playload.push(await Class.classifyIntent(msg, userId, detail));
+    }
+
+
 
   } else if (req.body.events[0].type === "postback") {
     let postback = req.body.events[0].postback;
@@ -59,7 +94,7 @@ app.post("/webhook", async (req, res) => {
       playload.push(await intentReservation('reserve_duration'));
     }
     else if (postback.data.split('&')[0] == 'reserve_duration') {
-      detail.duration = postback.data.split('&')[1];
+      detail.duration = Number(postback.data.split('&')[1]);
       playload.push(await intentReservation('reserve_user_info'));
       playload.push({
         "type": "text",

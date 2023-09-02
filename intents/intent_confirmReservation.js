@@ -1,11 +1,11 @@
-function intentConfirmReservation(detail) {
+function intentConfirmReservation(msg, detail) {
   console.log("intent: confirm reservation");
 
   var date = detail.date.split('T')[0];
   var time = detail.date.split('T')[1];
   // console.log(date);
   var format_date = new Date(date).toLocaleDateString('en-GB');
-  console.log(format_date);
+  // console.log(format_date);
 
   let content = {
     "type": "bubble",
@@ -167,9 +167,9 @@ function intentConfirmReservation(detail) {
   };
 
   let result = {
-    "type": "template",
-    "altText": "This is a buttons template",
-    "template": content
+    "type": "flex",
+    "altText": "confirmation card",
+    "contents": content
   };
 
   return result;
