@@ -39,7 +39,7 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
 
     if (msg.includes('---')) {
-      const nameRegex = /ชื่อ:\s*([^\n]+)/;
+      const nameRegex = /ชื่อ:\s*([^\nเบอร์โทร:]+)/;
       const phoneRegex = /เบอร์โทร:\s*([^\n---]*)/;
 
       const nameMatch = msg.match(nameRegex);
@@ -48,8 +48,9 @@ app.post("/webhook", async (req, res) => {
       const name = nameMatch ? nameMatch[1].trim() : '';
       const phoneNo = phoneMatch ? phoneMatch[1].trim() : '';
 
-      // console.log("Name:", name);
-      // console.log("Phone Number:", phoneNo);
+      console.log("Name:", nameMatch);
+      console.log("Name:", name);
+      console.log("Phone Number:", phoneNo);
       if (phoneNo == '') {
         playload.push({
           "type": "text",
