@@ -85,7 +85,7 @@ app.post("/webhook", async (req, res) => {
       detail.date = postback.params.datetime;
       playload.push({
         "type": "text",
-        "text": "บันทึกเรียบร้อย"
+        "text": "บันทึกเรียบร้อย😉"
       });
       playload.push(await intentReservation('reserve_plan'));
       //reserve_name
