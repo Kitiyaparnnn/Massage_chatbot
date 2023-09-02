@@ -51,18 +51,28 @@ app.post("/webhook", async (req, res) => {
       console.log("Name:", nameMatch);
       console.log("Name:", name);
       console.log("Phone Number:", phoneNo);
-      if (phoneNo == '') {
-        playload.push({
+      if (phoneNo == ''|| name == '') {
+        if(phoneNo == ''){
+          playload.push({
           "type": "text",
           "text": "กรุณากรอกเบอร์โทรศัพท์ในแบบฟอร์ม"
         })
+        }
+        else if (name == '') {
+          playload.push({
+            "type": "text",
+            "text": "กรุณากรอกชื่อในแบบฟอร์ม"
+          })
+        }
+        else{
+          playload.push({
+            "type": "text",
+            "text": "กรุณากรอกข้อมูลในแบบฟอร์มให้ครบถ้วน"
+          })
+        }
+        
       }
-      if (name == '') {
-        playload.push({
-          "type": "text",
-          "text": "กรุณากรอกชื่อในแบบฟอร์ม"
-        })
-      }
+      
       detail.fullName = name;
       detail.phoneNo = phoneNo;
 
