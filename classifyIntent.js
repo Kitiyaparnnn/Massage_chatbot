@@ -14,7 +14,7 @@ const { staff_button } = require('./components/staff_button');
 
 
 
-async function classifyIntent(msg, userId, detail) {
+async function classifyIntent(msg, userId, detail,userList) {
 
     let ask_openClose =
         ["เวลาเปิดปิด",
@@ -73,7 +73,7 @@ async function classifyIntent(msg, userId, detail) {
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else if (ask_staffChoice.includes(msg)) return staff_button();
     else if (detail.status == 'finish_phone') return intentConfirmReservation(msg, detail);
-    else if (confirm.includes(msg)) return intentSendReservationToAdmin(detail);
+    else if (confirm.includes(msg)) return intentSendReservationToAdmin(userId,userList);
     else return defaultMessage();
 }
 

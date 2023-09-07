@@ -51,14 +51,14 @@ app.post("/webhook", async (req, res) => {
   if (req.body.events[0].type === "message") {
     //get user message
     let msg = req.body.events[0].message.text;
-    const nameRegex = /^([^0-9]*)$/;
+    const phoneRegex = /^\d+$/;
 
     if (userList[userId].status == 'ask_name') {
       userList[userId].fullName = msg;
       userList[userId].status = 'finish_name';
     }
 
-    if (msg.includes('0') && userList[userId].status == 'finish_name') {
+    if (msg.match(phoneRegex) && userList[userId].status == 'finish_name') {
       userList[userId].phoneNo = msg;
       userList[userId].status = 'finish_phone';
 
@@ -105,8 +105,8 @@ app.post("/webhook", async (req, res) => {
       // }
     }
 
-      //classify intent
-      playload.push(await Class.classifyIntent(msg, userId, userList[userId]));
+    //classify intent
+    playload.push(await Class.classifyIntent(msg, userId, userList[userId],userList));
   }
 
   //postback messages
