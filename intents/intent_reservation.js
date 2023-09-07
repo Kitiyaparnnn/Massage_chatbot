@@ -100,7 +100,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
           "type": "action",
           "action": {
             "type": "postback",
-            "label": e.plan,
+            "label": `👉🏻${e.plan}`,
             "data": `reserve_plan&${e.plan}`,
             "displayText": `👉🏻${e.plan}`
           }

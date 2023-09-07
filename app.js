@@ -46,8 +46,6 @@ app.post("/webhook", async (req, res) => {
       status: ''
     }
   }
-
-
   // console.log(req.body.events[0]);
 
   if (req.body.events[0].type === "message") {
@@ -55,15 +53,19 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
     const nameRegex = /^([^0-9]*)$/;
 
-    if (msg.match(nameRegex) && userList[userId].status == 'finish_name') {
+    if (msg.match(nameRegex) && userList[userId].status == 'ask_name') {
       userList[userId].fullName = msg;
-      // playload.push(await Class.classifyIntent(msg, userList[userId], detail));
-      // userList[userId].status = 'finish_phone';
+      userList[userId].status = 'finish_name';
+      playload.push(await Class.classifyIntent(msg, userList[userId], detail));
+      userList[userId].status = 'ask_phone';
     }
 
-    if (msg.includes('0') && userList[userId].status == 'finish_name' ) {
-      userList[userId].status = 'finish_phone';
+    if (msg.includes('0') && userList[userId].status == 'ask_phone') {
       userList[userId].phoneNo = msg;
+      userList[userId].status = 'finish_phone';
+      playload.push(await Class.classifyIntent(msg, userList[userId], detail));
+      userList[userId].status = 'complete';
+
       // const nameRegex = /ชื่อ:\s*([^\nเบอร์โทร:]+)/;
       // const phoneRegex = /เบอร์โทร:\s*([^\n---]*)/;
 
@@ -106,10 +108,10 @@ app.post("/webhook", async (req, res) => {
       //   playload.push(await Class.classifyIntent(msg, userList[userId], detail));
       // }
     }
-
-    //classify intent
-    playload.push(await Class.classifyIntent(msg, userId, userList[userId]));
-
+    else {
+      //classify intent
+      playload.push(await Class.classifyIntent(msg, userId, userList[userId]));
+    }
   }
 
   //postback messages
@@ -133,11 +135,8 @@ app.post("/webhook", async (req, res) => {
     else if (postback.data.split('&')[0] == 'reserve_duration') {
       userList[userId].duration = Number(postback.data.split('&')[1]);
       playload.push(await intentReservation('reserve_user_name'));
-      userList[userId].status = 'finish_name';
+      userList[userId].status = 'ask_name';
     }
-
-    // console.log(postback.data.split('&')[0] == 'reserve_plan');
-
   }
   // console.log('user detail:', userList[userId]);
   console.log('userList:', userList);

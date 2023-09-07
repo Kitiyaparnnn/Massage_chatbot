@@ -75,8 +75,6 @@ async function classifyIntent(msg, userId, detail) {
     else if (detail.status == 'finish_phone') return intentConfirmReservation(msg, detail);
     else if (confirm.includes(msg)) return intentSendReservationToAdmin(detail);
     else return defaultMessage();
-
-
 }
 
 module.exports = { classifyIntent };
