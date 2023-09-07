@@ -53,10 +53,9 @@ app.post("/webhook", async (req, res) => {
     let msg = req.body.events[0].message.text;
     const nameRegex = /^([^0-9]*)$/;
 
-    if (msg.match(nameRegex) && userList[userId].status == 'ask_name') {
+    if (userList[userId].status == 'ask_name') {
       userList[userId].fullName = msg;
       userList[userId].status = 'finish_name';
-
     }
 
     if (msg.includes('0') && userList[userId].status == 'finish_name') {
