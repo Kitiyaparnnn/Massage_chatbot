@@ -38,10 +38,10 @@ app.post("/webhook", async (req, res) => {
 
   if (!userList.hasOwnProperty(userId)) {
     userList[userId] = {
-      date: '',
+      datetime: '',
       fullName: '',
       phoneNo: '',
-      massage_plan: '',
+      massagePlan: '',
       duration: 0,
       status: ''
     }
@@ -61,48 +61,6 @@ app.post("/webhook", async (req, res) => {
     if (msg.match(phoneRegex) && userList[userId].status == 'finish_name') {
       userList[userId].phoneNo = msg;
       userList[userId].status = 'finish_phone';
-
-      // const nameRegex = /ชื่อ:\s*([^\nเบอร์โทร:]+)/;
-      // const phoneRegex = /เบอร์โทร:\s*([^\n---]*)/;
-
-      // const nameMatch = msg.match(nameRegex);
-      // const phoneMatch = msg.match(phoneRegex);
-
-      // const name = nameMatch ? nameMatch[1].trim() : '';
-      // const phoneNo = phoneMatch ? phoneMatch[1].trim() : '';
-
-      // // console.log("Name:", nameMatch);
-      // // console.log("Name:", name);
-      // // console.log("Phone Number:", phoneNo);
-      // if (phoneNo == '' || name == '') {
-      //   if (phoneNo == '') {
-      //     playload.push({
-      //       "type": "text",
-      //       "text": "กรุณากรอกเบอร์โทรศัพท์ในแบบฟอร์ม"
-      //     })
-      //   }
-      //   else if (name == '') {
-      //     playload.push({
-      //       "type": "text",
-      //       "text": "กรุณากรอกชื่อในแบบฟอร์ม"
-      //     })
-      //   }
-      //   else {
-      //     playload.push({
-      //       "type": "text",
-      //       "text": "กรุณากรอกข้อมูลในแบบฟอร์มให้ครบถ้วน"
-      //     })
-      //   }
-
-      // }
-
-      // detail.fullName = name;
-      // detail.phoneNo = phoneNo;
-
-
-      // if (phoneNo != '' && name != '') {
-      //   playload.push(await Class.classifyIntent(msg, userList[userId], detail));
-      // }
     }
 
     //classify intent
@@ -115,7 +73,7 @@ app.post("/webhook", async (req, res) => {
     // console.log(req.body.events[0].postback);
 
     if (postback.data == 'reserve_date') {
-      userList[userId].date = postback.params.datetime;
+      userList[userId].datetime = postback.params.datetime;
       playload.push({
         "type": "text",
         "text": "บันทึกเรียบร้อย😉"
@@ -124,7 +82,7 @@ app.post("/webhook", async (req, res) => {
       //reserve_name
     }
     if (postback.data.split('&')[0] == 'reserve_plan') {
-      userList[userId].massage_plan = postback.data.split('&')[1];
+      userList[userId].massagePlan = postback.data.split('&')[1];
       playload.push(await intentReservation('reserve_duration'));
     }
     else if (postback.data.split('&')[0] == 'reserve_duration') {
