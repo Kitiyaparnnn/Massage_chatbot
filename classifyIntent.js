@@ -65,13 +65,14 @@ async function classifyIntent(msg, userId, detail) {
     if (ask_openClose.includes(msg)) return await intentOpenClose();
     else if (ask_massagePlans.includes(msg)) return await intentMassagePlans();
     else if (ask_infos.includes(msg)) return info_button();
-    else if (ask_toReserve.includes(msg)) return intentReservation('reserve_date');
+    else if (ask_toReserve.includes(msg)) return intentReservation('reserve_date',detail);
+    else if (detail.status == 'finish_name') return intentReservation('reserve_user_phone',detail);
     else if (ask_massager.includes(msg)) return massager_cards();
     else if (ask_checkQueue.includes(msg)) return intentCheckQueue();
     else if (ask_staff.includes(msg)) return intentStaff();
     else if (ask_schedule.includes(msg)) return intentStaffSchedule(userId);
     else if (ask_staffChoice.includes(msg)) return staff_button();
-    else if (msg.includes('---')) return intentConfirmReservation(msg, detail);
+    else if (detail.status == 'finish_phone') return intentConfirmReservation(msg, detail);
     else if (confirm.includes(msg)) return intentSendReservationToAdmin(detail);
     else return defaultMessage();
 

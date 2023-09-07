@@ -3,7 +3,7 @@ const axios = require("axios");
 const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
-exports.intentReservation = function intentReservation(stage) {
+exports.intentReservation = function intentReservation(stage,detail) {
   console.log("intent: reservation");
   console.log(`stage: ${stage}`);
 
@@ -14,8 +14,10 @@ exports.intentReservation = function intentReservation(stage) {
       return reserve_plan();
     case 'reserve_duration':
       return reserve_duration();
-    case 'reserve_user_info':
-      return reserve_user_info();
+    case 'reserve_user_name':
+      return reserve_user_name();
+    case 'reserve_user_phone':
+      return reserve_user_phone();
     default:
       let result = {
         "type": "text",
@@ -67,7 +69,7 @@ exports.intentReservation = function intentReservation(stage) {
             "type": "action",
             "action": {
               "type": "datetimepicker",
-              "label": "เลือกวันที่และเวลา",
+              "label": "🗓️เลือกวันที่และเวลา",
               "data": "reserve_date",
               "mode": "datetime",
               "initial": today_format,
@@ -100,7 +102,7 @@ exports.intentReservation = function intentReservation(stage) {
             "type": "postback",
             "label": e.plan,
             "data": `reserve_plan&${e.plan}`,
-            "displayText": e.plan
+            "displayText": `👉🏻${e.plan}`
           }
         }
         items.push(item);
@@ -108,7 +110,7 @@ exports.intentReservation = function intentReservation(stage) {
 
       let result = {
         "type": "text",
-        "text": "โปรดเลือกแผนนวดที่ต้องการจอง💆‍♀️",
+        "text": "โปรดเลือกบริการที่สนใจ💆‍♀️",
         "quickReply": {
           "items": items
         }
@@ -151,19 +153,23 @@ exports.intentReservation = function intentReservation(stage) {
     return result;
   }
 
-  function reserve_user_info() {
+  function reserve_user_name() {
     let result =
     {
       "type": "text",
-      "text": "รบกวนคุณลูกค้ากรอกข้อมูลของตนเองเพื่อใช้เป็นข้อมูลในการจอง \n👉🏻โดยคัดลอกแบบฟอร์มด้านล่างแล้ววางลงในช่องพิมพ์ข้อความจากนั้นเติมข้อมูลของลูกค้าแล้วกดส่ง",
+      "text": "ขอทราบชื่อของคุณลูกค้า✏️",
       "wrap": true,
-      // "action": {
-      //   "type": "postback",
-      //   "label": "reserve_user_info",
-      //   "data": "reserve_user_info",
-      //   "inputOption": "openKeyboard",
-      //   "fillInText": "---\nName: \nPhone: \nBirthday: \n---"
-      // }
+    };
+
+    return result;
+  }
+
+  function reserve_user_phone() {
+    let result =
+    {
+      "type": "text",
+      "text": "ขอทราบเบอร์โทรศัพท์ของคุณลูกค้า📞",
+      "wrap": true,
     };
 
     return result;
