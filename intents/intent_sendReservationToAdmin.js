@@ -1,5 +1,9 @@
 async function intentSendReservationToAdmin(detail) {
     try {
+        //send api to admin
+
+        //then delete the old reservation
+        delete(detail);
         
         let result = {
             "type": "text",

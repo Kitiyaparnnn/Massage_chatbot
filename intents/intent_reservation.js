@@ -135,7 +135,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
         "type": "action",
         "action": {
           "type": "postback",
-          "label": e,
+          "label": `🕑 ${e}`,
           "data": `reserve_duration&${e}`,
           "displayText": `${e}`
         }
