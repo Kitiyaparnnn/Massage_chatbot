@@ -56,15 +56,12 @@ app.post("/webhook", async (req, res) => {
     if (msg.match(nameRegex) && userList[userId].status == 'ask_name') {
       userList[userId].fullName = msg;
       userList[userId].status = 'finish_name';
-      playload.push(await Class.classifyIntent(msg, userList[userId], detail));
-      userList[userId].status = 'ask_phone';
+
     }
 
-    if (msg.includes('0') && userList[userId].status == 'ask_phone') {
+    if (msg.includes('0') && userList[userId].status == 'finish_name') {
       userList[userId].phoneNo = msg;
       userList[userId].status = 'finish_phone';
-      playload.push(await Class.classifyIntent(msg, userList[userId], detail));
-      userList[userId].status = 'complete';
 
       // const nameRegex = /ชื่อ:\s*([^\nเบอร์โทร:]+)/;
       // const phoneRegex = /เบอร์โทร:\s*([^\n---]*)/;
@@ -108,10 +105,9 @@ app.post("/webhook", async (req, res) => {
       //   playload.push(await Class.classifyIntent(msg, userList[userId], detail));
       // }
     }
-    else {
+
       //classify intent
       playload.push(await Class.classifyIntent(msg, userId, userList[userId]));
-    }
   }
 
   //postback messages

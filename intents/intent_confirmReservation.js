@@ -1,6 +1,8 @@
 function intentConfirmReservation(msg, detail) {
   console.log("intent: confirm reservation");
 
+  detail.status = 'complete';
+
   var date = detail.date.split('T')[0];
   var time = detail.date.split('T')[1];
   // console.log(date);
