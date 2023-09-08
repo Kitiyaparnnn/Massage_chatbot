@@ -176,12 +176,167 @@ function intentConfirmReservation(msg, detail) {
       "layout": "vertical",
       "type": "box"
     }
-  }
+  };
+
+  let content2 = {
+    "type": "bubble",
+    "body": {
+      "contents": [
+        {
+          "color": "#1DB446",
+          "size": "sm",
+          "text": "RECEIPT",
+          "type": "text",
+          "weight": "bold"
+        },
+        {
+          "margin": "md",
+          "size": "xxl",
+          "text": "ยืนยันการจอง",
+          "type": "text",
+          "weight": "bold"
+        },
+        {
+          "size": "sm",
+          "text": "คุณ <<ชื่อลูกค้า>> เบอร์ <<เบอร์ลูกค้า>>",
+          "type": "text",
+          "wrap": true,
+          "weight": "bold"
+        },
+        {
+          "margin": "xxl",
+          "type": "separator"
+        },
+        {
+          "contents": [
+            {
+              "contents": [
+                {
+                  "color": "#555555",
+                  "flex": 2,
+                  "size": "sm",
+                  "text": "บริการ",
+                  "type": "text",
+                  "wrap": true
+                },
+                {
+                  "align": "end",
+                  "color": "#111111",
+                  "flex": 1,
+                  "size": "sm",
+                  "text": "<<บริการ>>",
+                  "type": "text"
+                }
+              ],
+              "layout": "horizontal",
+              "type": "box"
+            },
+            {
+              "contents": [
+                {
+                  "color": "#555555",
+                  "flex": 0,
+                  "size": "sm",
+                  "text": "วันที่จอง",
+                  "type": "text"
+                },
+                {
+                  "align": "end",
+                  "color": "#111111",
+                  "size": "sm",
+                  "text": "<<p_date>>",
+                  "type": "text"
+                }
+              ],
+              "layout": "horizontal",
+              "type": "box"
+            },
+            {
+              "contents": [
+                {
+                  "color": "#555555",
+                  "flex": 0,
+                  "size": "sm",
+                  "text": "เวลา",
+                  "type": "text"
+                },
+                {
+                  "align": "end",
+                  "color": "#111111",
+                  "size": "sm",
+                  "text": "<<p_time>>",
+                  "type": "text"
+                }
+              ],
+              "layout": "horizontal",
+              "type": "box"
+            },
+            {
+              "contents": [
+                {
+                  "color": "#555555",
+                  "flex": 1,
+                  "size": "sm",
+                  "text": "จำนวนชั่วโมง",
+                  "type": "text",
+                  "wrap": true
+                },
+                {
+                  "align": "end",
+                  "color": "#111111",
+                  "flex": 1,
+                  "size": "sm",
+                  "text": "<<ชั่วโมง>> ชม.",
+                  "type": "text"
+                }
+              ],
+              "layout": "horizontal",
+              "type": "box"
+            }
+          ],
+          "layout": "vertical",
+          "margin": "md",
+          "spacing": "sm",
+          "type": "box"
+        },
+        {
+          "margin": "xxl",
+          "type": "separator"
+        },
+        {
+          "contents": [
+            {
+              "action": {
+                "label": "ยกเลิก",
+                "text": "ยกเลิก",
+                "type": "message"
+              },
+              "type": "button"
+            },
+            {
+              "action": {
+                "label": "ยืนยัน",
+                "text": "ยืนยัน",
+                "type": "message"
+              },
+              "color": "#1DB446",
+              "type": "button"
+            }
+          ],
+          "layout": "horizontal",
+          "margin": "md",
+          "type": "box"
+        }
+      ],
+      "layout": "vertical",
+      "type": "box"
+    }
+  };
 
   let result = {
     "type": "flex",
     "altText": "confirmation card",
-    "contents": content
+    "contents": content2
   };
 
   return result;
