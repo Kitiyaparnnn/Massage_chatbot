@@ -29,7 +29,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "sm",
-          "text": `คุณ ${detail.fullName}`,
+          "text": `คุณ ${detail.fullName} `,
           "type": "text",
           "wrap": true,
           "weight": "bold"
@@ -40,6 +40,13 @@ function intentConfirmReservation(msg, detail) {
           "type": "text",
           "wrap": true,
           "weight": "bold"
+        },
+        {
+          "color": "#aaaaaa",
+          "size": "xs",
+          "text": `คุณ ${detail.fullName} เบอร์ ${detail.phoneNo}`,
+          "type": "text",
+          "wrap": true
         },
         {
           "margin": "md",
