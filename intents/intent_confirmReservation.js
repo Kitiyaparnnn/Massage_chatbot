@@ -198,7 +198,14 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "sm",
-          "text": "คุณ <<ชื่อลูกค้า>> เบอร์ <<เบอร์ลูกค้า>>",
+          "text": `คุณ ${detail.fullName}`,
+          "type": "text",
+          "wrap": true,
+          "weight": "bold"
+        },
+        {
+          "size": "sm",
+          "text": `เบอร์ ${detail.phoneNo}`,
           "type": "text",
           "wrap": true,
           "weight": "bold"
@@ -224,7 +231,7 @@ function intentConfirmReservation(msg, detail) {
                   "color": "#111111",
                   "flex": 1,
                   "size": "sm",
-                  "text": "<<บริการ>>",
+                  "text": detail.massage_plan,
                   "type": "text"
                 }
               ],
@@ -244,7 +251,7 @@ function intentConfirmReservation(msg, detail) {
                   "align": "end",
                   "color": "#111111",
                   "size": "sm",
-                  "text": "<<p_date>>",
+                  "text": format_date,
                   "type": "text"
                 }
               ],
@@ -264,7 +271,7 @@ function intentConfirmReservation(msg, detail) {
                   "align": "end",
                   "color": "#111111",
                   "size": "sm",
-                  "text": "<<p_time>>",
+                  "text": time,
                   "type": "text"
                 }
               ],
@@ -286,7 +293,7 @@ function intentConfirmReservation(msg, detail) {
                   "color": "#111111",
                   "flex": 1,
                   "size": "sm",
-                  "text": "<<ชั่วโมง>> ชม.",
+                  "text": `${detail.duration} ชม.`,
                   "type": "text"
                 }
               ],
