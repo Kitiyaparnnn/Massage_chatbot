@@ -14,14 +14,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //get user's reservation detail
-var detail = {
-  date: '',
-  fullName: '',
-  phoneNo: '',
-  massage_plan: '',
-  duration: 0,
-  status: ''
-};
+// var detail = {
+//   date: '',
+//   fullName: '',
+//   phoneNo: '',
+//   massage_plan: '',
+//   duration: 0,
+//   status: ''
+// };
 
 var userList = {
 };
