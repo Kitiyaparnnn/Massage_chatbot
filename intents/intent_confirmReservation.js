@@ -9,31 +9,30 @@ function intentConfirmReservation(msg, detail) {
   var format_date = new Date(date).toLocaleDateString('en-GB');
   // console.log(format_date);
 
-  let content = {
+  let content =
+  {
     "type": "bubble",
     "body": {
       "contents": [
-        {
-          "color": "#1DB446",
-          "size": "sm",
-          "text": "RECEIPT",
-          "type": "text",
-          "weight": "bold",
-          "margin": "md"
-        },
         {
           "margin": "md",
           "size": "xxl",
           "text": "ยืนยันการจอง",
           "type": "text",
-          "weight": "bold"
+          "weight": "bold",
+          "color": "#1DB446",
+        },
+        {
+          "margin": "md",
+          "type": "separator"
         },
         {
           "size": "md",
           "text": `คุณ ${detail.fullName} `,
           "type": "text",
           "wrap": true,
-          "weight": "bold"
+          "weight": "bold",
+          "margin": "md"
         },
         {
           "size": "md",
