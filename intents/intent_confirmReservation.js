@@ -5,7 +5,7 @@ function intentConfirmReservation(msg, detail) {
 
   var date = detail.datetime.split('T')[0];
   var time = detail.datetime.split('T')[1];
-  console.log(date);
+  // console.log(date);
   var format_date = new Date(date).toLocaleDateString('en-GB');
   // console.log(format_date);
 
@@ -29,7 +29,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "sm",
-          "text": `คุณ ${detail.fullName} `,
+          "text": `คุณ ${detail.fullName}`,
           "type": "text",
           "wrap": true,
           "weight": "bold"
