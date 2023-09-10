@@ -57,8 +57,8 @@ exports.intentReservation = function intentReservation(stage,detail) {
     // var today_format = toIsoString(today_date);
     // var next3_format = toIsoString(max_date);
 
-    console.log(`today: ${today_format}`);
-    console.log(`max_date: ${next3_format}`);
+    // console.log(`today: ${today_format}`);
+    // console.log(`max_date: ${next3_format}`);
 
     let result = {
       "type": "text",
@@ -93,14 +93,16 @@ exports.intentReservation = function intentReservation(stage,detail) {
       });
 
       const massagePlan = response.data;
+      const labelRegex = /\([^)]+\)/g;
 
       let items = [];
       await massagePlan.massagePlans.forEach(e => {
+        let label = e.plan.replace(labelRegex,'');
         let item = {
           "type": "action",
           "action": {
             "type": "postback",
-            "label": `👉🏻${e.plan}`,
+            "label": `👉🏻${label}`,
             "data": `reserve_plan&${e.plan}`,
             "displayText": `👉🏻${e.plan}`
           }

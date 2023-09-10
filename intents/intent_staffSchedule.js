@@ -18,11 +18,11 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
         //get access staff schedule from SERVER API
         //sent username then get true/false
-        // const response = await axios.post(`${api_url}/checkOpenStatus`, {
-        //     headers: {
-        //         Authorization: `Bearer ${api_token}`,
-        //     },
-        // });
+        const schedule = await axios.get(`${api_url}/checkMassagerQueue?lineId=${user_name}`, {
+            headers: {
+                Authorization: `Bearer ${api_token}`,
+            },
+        });
 
         if (!!!user_name.data) {
             let result = {
@@ -33,11 +33,11 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
             return result;
         }
         else {
-            var masseuseNo = 10;
-            return staff_schedule(masseuseNo);
+            return staff_schedule(schedule.data);
         }
 
     } catch (error) {
         console.error(error);
+        return;
     }
 }

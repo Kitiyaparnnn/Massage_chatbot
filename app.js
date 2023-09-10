@@ -64,7 +64,7 @@ app.post("/webhook", async (req, res) => {
     }
 
     //classify intent
-    playload.push(await Class.classifyIntent(msg, userId, userList[userId],userList));
+    playload.push(await Class.classifyIntent(msg, userId, userList[userId], userList));
   }
 
   //postback messages
@@ -91,7 +91,7 @@ app.post("/webhook", async (req, res) => {
       userList[userId].status = 'ask_name';
     }
   }
-  // console.log('user detail:', userList[userId]);
+  // console.log('user detail:', JSON.stringify(userList[userId]));
   console.log('userList:', userList);
   // console.log(`playload is : ${playload}`);
   reply(reply_token, playload);
@@ -111,6 +111,7 @@ async function reply(reply_token, playload) {
       replyToken: reply_token,
       messages: playload,
     });
+
     console.log(JSON.stringify(body));
 
     // Send POST request using Axios

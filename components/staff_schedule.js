@@ -2,19 +2,9 @@ const axios = require("axios");
 const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
-exports.staff_schedule = async function staff_schedule(masseuseNo) {
-
+exports.staff_schedule = async function staff_schedule(schedule) {
+    console.log('schedule: ', schedule.queue[0].isMe);
     try {
-        //get schedule data from SERVER API
-        // const response = await axios.get(`${api_url}/checkOpenStatus`, {
-        //     headers: {
-        //         Authorization: `Bearer ${api_token}`,
-        //     },
-        // });
-
-        // const data = response.data;
-        // console.log(data);
-
         let col1 = [{
             "contents": [
                 {
@@ -52,9 +42,9 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
             "margin": "xs",
             "type": "box"
         }];
-        for (var i = 1; i <= 50; i++) {
+        for (var i = 1; i <= schedule.queue.length; i++) {
             let row;
-            if (masseuseNo == i) {
+            if (schedule.queue[i - 1].isMe == true) {
                 row = {
                     "type": "box",
                     "layout": "horizontal",
@@ -67,7 +57,7 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                         },
                         {
                             "type": "text",
-                            "text": "เบอร์",
+                            "text": `${schedule.queue[i-1].massagerNo}`,
                             "align": "center",
                             "color": "#0367D3"
                         }
@@ -87,7 +77,7 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                         },
                         {
                             "type": "text",
-                            "text": "เบอร์",
+                            "text": `${schedule.queue[i-1].massagerNo}`,
                             "align": "center",
 
                         }
@@ -96,7 +86,7 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                 };
             }
 
-            if (i <= 25) col1.push(row);
+            if (i <= (schedule.queue.length / 2)) col1.push(row);
             else col2.push(row);
         }
 
@@ -117,7 +107,7 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
                                 "color": "#ffffff",
                                 "flex": 4,
                                 "size": "xl",
-                                "text": "<<วันที่>>",
+                                "text": `${schedule.date}`,
                                 "type": "text",
                                 "weight": "bold"
                             }
@@ -155,15 +145,14 @@ exports.staff_schedule = async function staff_schedule(masseuseNo) {
 
         }
 
-
         let result = {
             "type": "flex",
             "altText": "schedule_card",
             "contents": content
         }
-
         return result;
     } catch (error) {
-
+        console.log(error);
+        return;
     }
 }
