@@ -78,7 +78,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                         },
                         {
                             "type": "text",
-                            "text": `${schedule.queue[i - 1] === undefined ? '' : schedule.queue[i - 1].massagerNo}`,
+                            "text": `${schedule.queue[i - 1] === undefined ? ' ' : schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
 
                         }
