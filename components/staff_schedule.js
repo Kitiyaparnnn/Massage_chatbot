@@ -42,9 +42,10 @@ exports.staff_schedule = async function staff_schedule(schedule) {
             "margin": "xs",
             "type": "box"
         }];
-        for (var i = 1; i <= schedule.queue.length; i++) {
+        for (var i = 1; i <= 50; i++) {
             let row;
-            if (schedule.queue[i - 1].isMe == true) {
+            let isQueue = schedule.queue[i - 1] == undefined ? false : schedule.queue[i - 1].isMe;
+            if (isQueue == true) {
                 row = {
                     "type": "box",
                     "layout": "horizontal",
@@ -57,7 +58,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                         },
                         {
                             "type": "text",
-                            "text": `${schedule.queue[i-1].massagerNo}`,
+                            "text": `${schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
                             "color": "#0367D3"
                         }
@@ -77,7 +78,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                         },
                         {
                             "type": "text",
-                            "text": `${schedule.queue[i-1].massagerNo}`,
+                            "text": `${schedule.queue[i - 1] === undefined ? '' : schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
 
                         }
@@ -86,7 +87,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                 };
             }
 
-            if (i <= (schedule.queue.length / 2)) col1.push(row);
+            if (i <= 25) col1.push(row);
             else col2.push(row);
         }
 
