@@ -86,7 +86,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
   async function reserve_plan() {
     try {
       // console.log('@reserve plan');
-      const response = await axios.get(`${api_url}/checkMassagePlans`, {
+      const response = await axios.get(`${api_url}/checkMassagePlans?bookingQueue=1`, {
         headers: {
           Authorization: `Bearer ${api_token}`,
         },

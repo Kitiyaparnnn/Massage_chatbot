@@ -15,7 +15,6 @@ const { staff_button } = require('./components/staff_button');
 
 
 async function classifyIntent(msg, userId, detail,userList) {
-
     let ask_openClose =
         ["เวลาเปิดปิด",
             "วันนี้เปิดไหม",
@@ -35,7 +34,8 @@ async function classifyIntent(msg, userId, detail,userList) {
             "ปิดกี่โมง",
             "เปิดวันไหน",
             "ปิดวันไหน",
-            "ปิดวันไหนบ้าง"];
+            "ปิดวันไหนบ้าง",
+        "เวลาให้บริการ"];
     let ask_massagePlans =
         ["เมนูนวด",
             "มีนวดอะไรบ้าง",
