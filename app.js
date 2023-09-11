@@ -74,9 +74,13 @@ app.post("/webhook", async (req, res) => {
 
     if (postback.data == 'reserve_date') {
       userList[userId].datetime = postback.params.datetime;
+      var date = postback.params.datetime.split('T')[0];
+      var time = postback.params.datetime.split('T')[1];
+      var format_date = new Date(date).toLocaleDateString('en-GB');
+
       playload.push({
         "type": "text",
-        "text": "บันทึกเรียบร้อย😉"
+        "text": `คุณลูกค้าได้เลือกจองใช้บริการ \nวันที่ ${format_date} เวลา ${time}`
       });
       playload.push(await intentReservation('reserve_plan'));
       //reserve_name

@@ -28,7 +28,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "md",
-          "text": `คุณ ${detail.fullName} `,
+          "text": `ชื่อลูกค้า ${detail.fullName} `,
           "type": "text",
           "wrap": true,
           "weight": "bold",
@@ -36,7 +36,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "md",
-          "text": `เบอร์ ${detail.phoneNo}`,
+          "text": `โทรศัพท์ ${detail.phoneNo}`,
           "type": "text",
           "wrap": true,
           "weight": "bold"
@@ -51,7 +51,7 @@ function intentConfirmReservation(msg, detail) {
               "contents": [
                 {
                   "color": "#555555",
-                  "flex": 2,
+                  "flex": 1,
                   "size": "sm",
                   "text": "บริการ",
                   "type": "text",
