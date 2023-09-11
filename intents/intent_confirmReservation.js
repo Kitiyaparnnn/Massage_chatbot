@@ -12,6 +12,7 @@ function intentConfirmReservation(msg, detail) {
   let content =
   {
     "type": "bubble",
+    "size": "kilo",
     "body": {
       "contents": [
         {
@@ -60,7 +61,7 @@ function intentConfirmReservation(msg, detail) {
                 {
                   "align": "end",
                   "color": "#111111",
-                  "flex": 2,
+                  "flex": 1,
                   "size": "sm",
                   "text": detail.massagePlan,
                   "type": "text",
