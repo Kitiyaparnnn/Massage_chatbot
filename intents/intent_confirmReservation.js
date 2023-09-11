@@ -60,10 +60,11 @@ function intentConfirmReservation(msg, detail) {
                 {
                   "align": "end",
                   "color": "#111111",
-                  "flex": 3,
+                  "flex": 2,
                   "size": "sm",
                   "text": detail.massagePlan,
-                  "type": "text"
+                  "type": "text",
+                  "wrap": true
                 }
               ],
               "layout": "horizontal",
