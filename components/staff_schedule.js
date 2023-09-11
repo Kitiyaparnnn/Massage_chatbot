@@ -3,7 +3,7 @@ const api_token = process.env.API_TOKEN;
 const api_url = process.env.API_URL;
 
 exports.staff_schedule = async function staff_schedule(schedule) {
-    console.log('schedule: ', schedule.queue[0].isMe);
+    // console.log('schedule: ', schedule.queue[0].isMe);
     try {
         let col1 = [{
             "contents": [
@@ -58,7 +58,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                         },
                         {
                             "type": "text",
-                            "text": `${schedule.queue[i - 1].massagerNo}`,
+                            "text": `#${schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
                             "color": "#0367D3"
                         }
@@ -78,9 +78,8 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                         },
                         {
                             "type": "text",
-                            "text": `${schedule.queue[i - 1] === undefined ? ' ' : schedule.queue[i - 1].massagerNo}`,
+                            "text": `${schedule.queue[i - 1] === undefined ? ' ' : '#' + schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
-
                         }
                     ],
                     "margin": "xs"
