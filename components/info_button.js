@@ -17,9 +17,9 @@ exports.info_button = function info_button() {
           "text": "บริการนวดแผนไทย"
         },
         {
-          "type": "message",
+          "type": "uri",
           "label": "🧭แผนที่",
-          "text": "แผนที่"
+          "uri": "https://goo.gl/maps/H9zUARJpHMJbXzyi8"
         },
         {
           "type": "message",
