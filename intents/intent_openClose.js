@@ -56,11 +56,11 @@ async function intentOpenClose() {
                 "type": "box"
               },
               {
-                "backgroundColor": "#b9a18e",
+                "backgroundColor": "#ffffff",
                 "contents": [
                   {
                     "align": "center",
-                    "color": "#f8f5f3",
+                    // "color": "#f8f5f3",
                     "gravity": "center",
                     "margin": "sm",
                     "size": "md",
@@ -90,14 +90,14 @@ async function intentOpenClose() {
         "type": "box"
       },
       "body": {
-        "backgroundColor": "#b29782",
+        // "backgroundColor": "#b29782",
         "contents": [
           {
             "contents": [
               {
                 "contents": [
                   {
-                    "color": "#ffffff",
+                    // "color": "#ffffff",
                     "contents": [],
                     "size": "lg",
                     "text": "ศูนย์นวดแผนไทยหนองป่าครั่ง",
@@ -111,7 +111,7 @@ async function intentOpenClose() {
                       "type": "uri",
                       "uri": "https://goo.gl/maps/H9zUARJpHMJbXzyi8"
                     },
-                    "color": "#ffffffcc",
+                    // "color": "#ffffffcc",
                     "size": "sm",
                     "text": "ข้างโรงพยาบาลเทศบาลหนองป่าครั่ง ตำบลหนองป่าครั่ง อำเภอเมืองเชียงใหม่ เชียงใหม่ 50000",
                     "type": "text",
@@ -123,12 +123,12 @@ async function intentOpenClose() {
                 "type": "box"
               },
               {
-                "backgroundColor": "#ffffff1A",
+                // "backgroundColor": "#ffffff1A",
                 "contents": [
                   {
                     "contents": [
                       {
-                        "color": "#ffffffde",
+                        // "color": "#ffffffde",
                         "contents": [],
                         "margin": "lg",
                         "size": "sm",
@@ -137,7 +137,7 @@ async function intentOpenClose() {
                         "wrap": true
                       },
                       {
-                        "color": "#ffffffde",
+                        // "color": "#ffffffde",
                         "contents": [],
                         "margin": "lg",
                         "size": "sm",
@@ -164,7 +164,7 @@ async function intentOpenClose() {
                   {
                     "type": "text",
                     "text": "☎️ 053117548",
-                    "color": "#ffffffde",
+                    // "color": "#ffffffde",
                     "action":
                     {
                       "type": "uri",
@@ -177,7 +177,7 @@ async function intentOpenClose() {
                   {
                     "type": "text",
                     "text": "📞 0656983469",
-                    "color": "#ffffffde",
+                    // "color": "#ffffffde",
                     "action":
                     {
                       "type": "uri",
