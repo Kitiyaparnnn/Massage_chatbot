@@ -28,7 +28,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "md",
-          "text": `ชื่อลูกค้า ${detail.fullName} `,
+          "text": `ชื่อลูกค้า: ${detail.fullName} `,
           "type": "text",
           "wrap": true,
           "weight": "bold",
@@ -36,7 +36,7 @@ function intentConfirmReservation(msg, detail) {
         },
         {
           "size": "md",
-          "text": `โทรศัพท์ ${detail.phoneNo}`,
+          "text": `โทรศัพท์: ${detail.phoneNo}`,
           "type": "text",
           "wrap": true,
           "weight": "bold"
@@ -60,7 +60,7 @@ function intentConfirmReservation(msg, detail) {
                 {
                   "align": "end",
                   "color": "#111111",
-                  "flex": 1,
+                  "flex": 2,
                   "size": "sm",
                   "text": detail.massagePlan,
                   "type": "text"

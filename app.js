@@ -80,7 +80,7 @@ app.post("/webhook", async (req, res) => {
 
       playload.push({
         "type": "text",
-        "text": `คุณลูกค้าได้เลือกจองใช้บริการ \nวันที่ ${format_date} เวลา ${time}`
+        "text": `คุณลูกค้าได้เลือกจองใช้บริการ \nวันที่ ${format_date} \nเวลา ${time}`
       });
       playload.push(await intentReservation('reserve_plan'));
       //reserve_name
