@@ -123,7 +123,7 @@ async function intentOpenClose() {
                 "type": "box"
               },
               {
-                // "backgroundColor": "#ffffff1A",
+                "backgroundColor": "#ffffff1A",
                 "contents": [
                   {
                     "contents": [
