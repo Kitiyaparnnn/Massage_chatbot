@@ -8,22 +8,22 @@ exports.info_button = function info_button() {
       "actions": [
         {
           "type": "message",
-          "label": "⏳เวลาให้บริการ",
+          "label": "⏳ เวลาให้บริการ",
           "text": "เวลาให้บริการ"
         },
         {
           "type": "message",
-          "label": "💆‍♀️บริการนวดแผนไทย",
+          "label": "💆‍♀️ บริการนวดแผนไทย",
           "text": "บริการนวดแผนไทย"
         },
         {
           "type": "uri",
-          "label": "🧭แผนที่",
+          "label": "🧭 แผนที่",
           "uri": "https://goo.gl/maps/H9zUARJpHMJbXzyi8"
         },
         {
           "type": "message",
-          "label": "👩‍💼ติดต่อเจ้าหน้าที่",
+          "label": "👩‍💼 ติดต่อเจ้าหน้าที่",
           "text": "ติดต่อเจ้าหน้าที่"
         },
       ]

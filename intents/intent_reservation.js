@@ -62,14 +62,14 @@ exports.intentReservation = function intentReservation(stage,detail) {
 
     let result = {
       "type": "text",
-      "text": "กรุณาเลือกวัน-เวลาที่ต้องการจองใช้บริการ🗓️",
+      "text": "กรุณาเลือกวัน-เวลาที่ต้องการจองใช้บริการ 🗓️",
       "quickReply": {
         "items": [
           {
             "type": "action",
             "action": {
               "type": "datetimepicker",
-              "label": "🗓️เลือกวันที่และเวลา",
+              "label": "🗓️ เลือกวันที่และเวลา",
               "data": "reserve_date",
               "mode": "datetime",
               "initial": today_format,
@@ -102,9 +102,9 @@ exports.intentReservation = function intentReservation(stage,detail) {
           "type": "action",
           "action": {
             "type": "postback",
-            "label": `👉🏻${label}`,
+            "label": `👉🏻 ${label}`,
             "data": `reserve_plan&${e.plan}`,
-            "displayText": `👉🏻${e.plan}`
+            "displayText": `👉🏻 ${e.plan}`
           }
         }
         items.push(item);
@@ -112,7 +112,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
 
       let result = {
         "type": "text",
-        "text": "กรุณาเลือกบริการที่สนใจ💆‍♀️",
+        "text": "กรุณาเลือกบริการที่สนใจ 💆‍♀️",
         "quickReply": {
           "items": items
         }
@@ -147,7 +147,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
 
     let result = {
       "type": "text",
-      "text": "กรุณาเลือกจำนวน ชม. รับบริการ⏱️",
+      "text": "กรุณาเลือกจำนวน ชม. รับบริการ ⏱️",
       "quickReply": {
         "items": items
       }

@@ -19,17 +19,16 @@ async function intentMassagePlans() {
             let card = {
                 "contents": [
                     {
-                        "flex": 3,
-                        "margin": "xs",
+                        "flex": 2,
                         "text": e.plan,
                         "type": "text",
                         "weight": "bold",
-                        "wrap": true
+                        "wrap": true,
+                        "size": "md"
                     },
                     {
                         "align": "end",
-                        "color": "#aaaaaa",
-                        "size": "sm",
+                        "size": "md",
                         "text": `${e.price}`,
                         "type": "text"
                     }
@@ -42,11 +41,12 @@ async function intentMassagePlans() {
 
         let contents = {
             "type": "bubble",
+            "size": "kilo",
             "body": {
                 "contents": [
                     {
                         "size": "xl",
-                        "text": "ค่าบริการนวดแผนไทย",
+                        "text": "ค่าบริการ",
                         "type": "text",
                         "weight": "bold"
                     },

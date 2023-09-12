@@ -55,13 +55,15 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                             "type": "text",
                             "text": `${i}`,
                             "align": "center",
-                            "color": "#0367D3"
+                            "color": "#0367D3",
+                            "weight": "bold"
                         },
                         {
                             "type": "text",
                             "text": `#${schedule.queue[i - 1].massagerNo}`,
                             "align": "center",
-                            "color": "#0367D3"
+                            "color": "#0367D3",
+                            "weight": "bold"
                         }
                     ],
                     "margin": "xs"
@@ -101,7 +103,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                             {
                                 "color": "#ffffff66",
                                 "size": "sm",
-                                "text": "ตารางงานวันที่ ",
+                                "text": "ข้อมูลคิวงานวันนี้ ",
                                 "type": "text"
                             },
                             {
@@ -149,7 +151,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
                             {
                                 "color": "#ffffff66",
                                 "size": "sm",
-                                "text": "ตารางงานวันที่ ",
+                                "text": "ข้อมูลคิวงานวันนี้ ",
                                 "type": "text"
                             },
                             {
