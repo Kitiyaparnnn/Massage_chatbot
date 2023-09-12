@@ -42,7 +42,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
             "margin": "xs",
             "type": "box"
         }];
-        for (var i = 1; i <= 50; i++) {
+        for (var i = 1; i <= schedule.queue.length; i++) {
             let row;
             let isQueue = schedule.queue[i - 1] == undefined ? false : schedule.queue[i - 1].isMe;
             if (isQueue == true) {
@@ -90,7 +90,55 @@ exports.staff_schedule = async function staff_schedule(schedule) {
             else col2.push(row);
         }
 
-        let content = {
+        let content1 = {
+            "type": "bubble",
+            "header": {
+                "backgroundColor": "#0367D3",
+                "contents": [
+                    {
+                        "contents": [
+                            {
+                                "color": "#ffffff66",
+                                "size": "sm",
+                                "text": "ตารางงานวันที่ ",
+                                "type": "text"
+                            },
+                            {
+                                "color": "#ffffff",
+                                "flex": 4,
+                                "size": "xl",
+                                "text": `${schedule.date}`,
+                                "type": "text",
+                                "weight": "bold"
+                            }
+                        ],
+                        "layout": "vertical",
+                        "type": "box"
+                    }
+                ],
+                "layout": "vertical",
+                "paddingAll": "20px",
+                "paddingTop": "22px",
+                "spacing": "xs",
+                "type": "box"
+            },
+            "body": {
+                "contents": [
+                    {
+                        "contents": col1,
+                        "cornerRadius": "30px",
+                        "layout": "vertical",
+                        "type": "box",
+                        "position": "relative"
+                    }
+                ],
+                "layout": "horizontal",
+                "type": "box"
+            }
+
+        }
+
+        let content2 = {
             "type": "bubble",
             "header": {
                 "backgroundColor": "#0367D3",
@@ -145,6 +193,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
 
         }
 
+        let content = schedule.queue.length < 25 ? content1:content2;
         let result = {
             "type": "flex",
             "altText": "schedule_card",

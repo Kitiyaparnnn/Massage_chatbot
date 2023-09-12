@@ -161,19 +161,19 @@ async function intentOpenClose() {
                 "type": "box",
                 "layout": "baseline",
                 "contents": [
-                  {
-                    "type": "text",
-                    "text": "☎️ 053117548",
-                    // "color": "#ffffffde",
-                    "action":
-                    {
-                      "type": "uri",
-                      "label": "☎️ 053117548",
-                      "uri": "tel:053117548"
-                    }
+                  // {
+                  //   "type": "text",
+                  //   "text": "☎️ 053117548",
+                  //   // "color": "#ffffffde",
+                  //   "action":
+                  //   {
+                  //     "type": "uri",
+                  //     "label": "☎️ 053117548",
+                  //     "uri": "tel:053117548"
+                  //   }
 
 
-                  },
+                  // },
                   {
                     "type": "text",
                     "text": "📞 0656983469",
