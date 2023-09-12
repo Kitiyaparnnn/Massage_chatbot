@@ -104,7 +104,7 @@ function intentConfirmReservation(msg, detail) {
                   "align": "end",
                   "color": "#111111",
                   "size": "sm",
-                  "text": time,
+                  "text": `${time} น.`,
                   "type": "text"
                 }
               ],
