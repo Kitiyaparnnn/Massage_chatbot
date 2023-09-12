@@ -45,6 +45,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
         for (var i = 1; i <= schedule.queue.length; i++) {
             let row;
             let isQueue = schedule.queue[i - 1] == undefined ? false : schedule.queue[i - 1].isMe;
+            console.log('isQueue: ', isQueue);
             if (isQueue == true) {
                 row = {
                     "type": "box",
@@ -193,7 +194,7 @@ exports.staff_schedule = async function staff_schedule(schedule) {
 
         }
 
-        let content = schedule.queue.length < 25 ? content1:content2;
+        let content = schedule.queue.length < 25 ? content1 : content2;
         let result = {
             "type": "flex",
             "altText": "schedule_card",
