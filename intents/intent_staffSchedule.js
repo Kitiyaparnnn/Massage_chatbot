@@ -18,7 +18,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
         //get access staff schedule from SERVER API
         //sent username then get true/false
-        const schedule = await axios.get(`${api_url}/checkMassagerQueue?lineId=${user_name}`, {
+        const schedule = await axios.get(`${api_url}/checkMassagerQueue?lineId=${user_name.data.displayName}`, {
             headers: {
                 Authorization: `Bearer ${api_token}`,
             },
