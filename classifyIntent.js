@@ -3,6 +3,7 @@ const { intentMassagePlans } = require('./intents/intent_massagePlans');
 const { defaultMessage } = require("./intents/default")
 const { intentConfirmReservation } = require("./intents/intent_confirmReservation")
 const { intentSendReservationToAdmin } = require("./intents/intent_sendReservationToAdmin")
+const { intentMap} = require("./intents/intent_map")
 const { info_button } = require("./components/info_button")
 const { intentReservation } = require('./intents/intent_reservation')
 const { intentStaff } = require('./intents/intent_staff')
@@ -50,11 +51,12 @@ async function classifyIntent(msg, userId, detail,userList) {
             "ราคา",
             "มีบริการอะไรบ้าง",
             "บริการนวดแผนไทย"];
+    let ask_map = ["แผนที่","ที่ตั้ง","ที่ตั้งศูนย์นวด","เส้นทาง"];
     let ask_infos = ["สอบถามข้อมูล"];
     let ask_toReserve = ["ระบบจองคิว", "จอง", "จองคิว", "ระบบจอง"];
     let ask_checkQueue = ["ตรวจสอบคิว", "คิวของฉัน", "คิว"];
     let ask_massager = ["ค้นหาหมอนวด"];
-    let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่"];
+    let ask_staff = ["ติดต่อเจ้าหน้าที่", "เจ้าหน้าที่", "ติดต่อศูนย์นวด", "เบอร์ติดต่อ","ติดต่อสอบถาม"];
     let ask_schedule = ["ตารางงาน", "ตารางการทำงาน", "ตารางทำงาน"]
     let ask_staffChoice = ["ข้อมูลเจ้าหน้าที่", "เมนูพนักงาน", "เมนูเจ้าหน้าที่", "เมนูหมอนวด"];
     let confirm = ["ยืนยัน"];
@@ -64,6 +66,7 @@ async function classifyIntent(msg, userId, detail,userList) {
 
     if (ask_openClose.includes(msg)) return await intentOpenClose();
     else if (ask_massagePlans.includes(msg)) return await intentMassagePlans();
+    else if (ask_map.includes(msg)) return intentMap();
     else if (ask_infos.includes(msg)) return info_button();
     else if (ask_toReserve.includes(msg)) return intentReservation('reserve_date', detail);
     else if (detail.status == 'finish_name') return intentReservation('reserve_user_phone', detail);
