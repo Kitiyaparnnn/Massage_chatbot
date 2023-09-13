@@ -4,8 +4,8 @@ exports.intentMap = function intentMap() {
         "type": "location",
         "title": "ศูนย์นวด หนองป่าครั่ง",
         "address": "ถนนบ้านบวกครกน้อย ตำบลหนองป่าครั่ง อำเภอเมือง จังหวัดเชียงใหม่ ",
-        "latitude": 18.7859697,
-        "longitude": 99.0339881
+        "latitude": 99.0339881,
+        "longitude": 18.7859697
       };
     return result;
 }
