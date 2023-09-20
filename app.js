@@ -122,16 +122,19 @@ async function reply(reply_token, playload) {
 app.listen(PORT, async () => {
   console.log(`Example app listening at http://localhost:${PORT}`);
 
-  //set up default rich menu for Line
-  let headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
+  try {
+    //set up default rich menu for Line
+    let headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
 
-  const setUpRichMenu = await axios.post('https://api.line.me/v2/bot/user/all/richmenu/richmenu-171dcd9f0057fc05c6313785cc7e175b', {
-    headers
-  });
+    const setUpRichMenu = await axios.post(`${process.env.LINE_API}/user/all/richmenu/richmenu-171dcd9f0057fc05c6313785cc7e175b`, null, {
+      headers
+    });
 
-  console.log('set up rich menu status: ', setUpRichMenu);
-
+    console.log('set up rich menu status: ', setUpRichMenu.data !== null ? 'success' : 'not success');
+  } catch (error) {
+    console.error('Error:', error.response ? error.response.data : error.message);
+  }
 });
