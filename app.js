@@ -13,15 +13,6 @@ const LINE_REPLY = `${process.env.LINE_API}/message/reply`;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//get user's reservation detail
-// var detail = {
-//   date: '',
-//   fullName: '',
-//   phoneNo: '',
-//   massage_plan: '',
-//   duration: 0,
-//   status: ''
-// };
 
 var userList = {
 };
@@ -128,6 +119,19 @@ async function reply(reply_token, playload) {
   }
 }
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Example app listening at http://localhost:${PORT}`);
+
+  //set up default rich menu for Line
+  let headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
+  const setUpRichMenu = await axios.post('https://api.line.me/v2/bot/user/all/richmenu/richmenu-171dcd9f0057fc05c6313785cc7e175b', {
+    headers
+  });
+
+  console.log('set up rich menu status: ', setUpRichMenu);
+
 });
