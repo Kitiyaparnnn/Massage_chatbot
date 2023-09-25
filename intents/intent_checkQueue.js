@@ -174,6 +174,10 @@ exports.intentCheckQueue = async function intentCheckQueue() {
     }
     catch (err) {
         console.error(error);
-        return;
+        let errorMessage = {
+            "type": "text",
+            "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+          };
+          return errorMessage;
     }
 }

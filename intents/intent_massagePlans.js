@@ -88,7 +88,11 @@ async function intentMassagePlans() {
         return result;
 
     } catch (error) {
-        console.error(error);
+        let errorMessage = {
+            "type": "text",
+            "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+          };
+          return errorMessage;
     }
 }
 

@@ -28,6 +28,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
   }
 
   function reserve_date() {
+    //manage time format to disply
     var today_date = new Date(new Date().toLocaleString({ timeZone: 'Asia/Bangkok' }));
     var max_date = new Date(new Date().toLocaleString({ timeZone: 'Asia/Bangkok' }));
     max_date.setDate(today_date.getDate() + 3);
@@ -39,26 +40,6 @@ exports.intentReservation = function intentReservation(stage,detail) {
     var next3_date = max_date.getFullYear().toString() + '-' + String(max_date.getMonth() + 1).padStart(2, '0') + '-' + String(max_date.getDate()).padStart(2, '0');
     var next3_time = max_date.toLocaleString('de-DE', { hour: '2-digit', hour12: false, timeZone: 'Asia/Bangkok' }).split(' ')[0] + ":" + String(max_date.getMinutes()).padStart(2, '0');
     var next3_format = next3_date + "t" + next3_time;
-
-    // function toIsoString(date) {
-    //   var tzo = -date.getTimezoneOffset(),
-    //     dif = tzo >= 0 ? '+' : '-',
-    //     pad = function (num) {
-    //       return (num < 10 ? '0' : '') + num;
-    //     };
-
-    //   return date.getFullYear() +
-    //     '-' + pad(date.getMonth() + 1) +
-    //     '-' + pad(date.getDate()) +
-    //     'T' + pad(date.getHours()) +
-    //     ':' + pad(date.getMinutes());
-
-    // }
-    // var today_format = toIsoString(today_date);
-    // var next3_format = toIsoString(max_date);
-
-    // console.log(`today: ${today_format}`);
-    // console.log(`max_date: ${next3_format}`);
 
     let result = {
       "type": "text",
@@ -85,7 +66,7 @@ exports.intentReservation = function intentReservation(stage,detail) {
 
   async function reserve_plan() {
     try {
-      // console.log('@reserve plan');
+      //get massage menu from host server
       const response = await axios.get(`${api_url}/checkMassagePlans?bookingQueue=1`, {
         headers: {
           Authorization: `Bearer ${api_token}`,
@@ -130,7 +111,8 @@ exports.intentReservation = function intentReservation(stage,detail) {
   }
 
   async function reserve_duration() {
-    let duration = [1, 1.5, 2, 2.5, 3];
+    
+    let duration = [1, 1.5, 2, 2.5, 3]; //hour for reserve
     let items = [];
     await duration.forEach(e => {
       let item = {

@@ -211,7 +211,11 @@ async function intentOpenClose() {
   } catch (error) {
     // console.log(error.message);
     console.error(error);
-    return;
+    let errorMessage = {
+      "type": "text",
+      "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+    };
+    return errorMessage;
   }
 }
 

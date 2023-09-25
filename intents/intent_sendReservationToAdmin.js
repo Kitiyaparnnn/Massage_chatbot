@@ -6,7 +6,7 @@ async function intentSendReservationToAdmin(userId, userList) {
     try {
         console.log('confirmed : ',JSON.stringify(userList[userId]));
 
-        //send api to admin
+        //send reservation data to admin
         let body = JSON.stringify(userList[userId]);
 
         await axios.post(`${api_url}/bookMassageQueue`, body, {

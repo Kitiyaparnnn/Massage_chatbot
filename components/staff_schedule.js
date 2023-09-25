@@ -205,6 +205,10 @@ exports.staff_schedule = async function staff_schedule(schedule) {
         return result;
     } catch (error) {
         console.log(error);
-        return;
+        let errorMessage = {
+            "type": "text",
+            "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+          };
+        return errorMessage;
     }
 }

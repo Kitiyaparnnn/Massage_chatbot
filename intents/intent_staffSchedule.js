@@ -16,7 +16,7 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
         console.log(`userName: ${user_name.data.displayName}`);
         // console.log(!!!user_name.data);
 
-        //get access staff schedule from SERVER API
+        //get access staff schedule from host server
         //sent username then get true/false
         const schedule = await axios.get(`${api_url}/checkMassagerQueue?lineId=${user_name.data.displayName}`, {
             headers: {
@@ -38,6 +38,10 @@ exports.intentStaffSchedule = async function intentStaffSchedule(userId) {
 
     } catch (error) {
         console.error(error);
-        return;
+        let errorMessage = {
+            "type": "text",
+            "text": "ขออภัย มีข้อผิดพลาดในการดึงข้อมูล โปรดลองอีกครั้งในภายหลัง"
+          };
+          return errorMessage;
     }
 }
