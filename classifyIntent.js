@@ -12,7 +12,7 @@ const { intentCheckQueue } = require('./intents/intent_checkQueue')
 const { reserve_button } = require("./components/reserve_button");
 const { massager_cards } = require('./components/massager_cards');
 const { staff_button } = require('./components/staff_button');
-
+const { intentSuggestion } = require('./intents/intent_suggestion')
 
 
 async function classifyIntent(msg, userId, detail,userList) {
@@ -60,6 +60,7 @@ async function classifyIntent(msg, userId, detail,userList) {
     let ask_schedule = ["ตารางงาน", "ตารางการทำงาน", "ตารางทำงาน"]
     let ask_staffChoice = ["ข้อมูลเจ้าหน้าที่", "เมนูพนักงาน", "เมนูเจ้าหน้าที่", "เมนูหมอนวด"];
     let confirm = ["ยืนยัน"];
+    let suggestion = ["ข้อเสนอแนะ","ติชม","อยากติชม","อยากให้ข้อเสนอแนะ","ร้องเรียน","ฟ้อง"]
 
 
     console.log("stage: classify");
@@ -77,6 +78,8 @@ async function classifyIntent(msg, userId, detail,userList) {
     else if (ask_staffChoice.includes(msg)) return staff_button();
     else if (detail.status == 'finish_phone') return intentConfirmReservation(msg, detail);
     else if (confirm.includes(msg)) return intentSendReservationToAdmin(userId,userList);
+    else if (suggestion.includes(msg)) return intentSuggestion(detail,true);
+    else if (detail.status == 'suggestion') return intentSuggestion(detail,false);
     else return defaultMessage();
 }
 
