@@ -1,6 +1,6 @@
 exports.intentSuggestion = function intentSuggestion(detail, isReply) {
     console.log("intent: suggestion");
-    const result = {};
+    let result = {};
 
     switch (isReply) {
         case false:
